@@ -9,6 +9,10 @@ import SwiftUI
 
 struct PackingChecklistView: View {
     @Environment(AppRouter.self) private var router
+    @Environment(AppSession.self) private var session
+
+    // Inisialisasi dengan mock sebagai placeholder aman.
+    // init(tripSetupData:) dari AppSession akan diinjeksi di .onAppear.
     @State private var viewModel = PackingChecklistViewModel()
     @State private var showCompactTitle = false
 
@@ -82,8 +86,6 @@ struct PackingChecklistView: View {
                 if showCompactTitle {
                     ToolbarItem(placement: .principal) {
                         VStack(spacing: 0) {
-                            
-
                             Text(viewModel.tripDate)
                                 .font(.caption2)
                                 .foregroundStyle(.secondary)
@@ -102,6 +104,14 @@ struct PackingChecklistView: View {
                 AddEditItemView(onSave: viewModel.addItem)
             }
         }
+        .onAppear {
+            // Jika ada tripSetupData real dari alur Library-first,
+            // generate checklist berdasarkan metadata gunung & input user.
+            // Jika tidak ada (preview/direct launch), biarkan mock tetap digunakan.
+            if let tripData = session.tripSetupData {
+                viewModel = PackingChecklistViewModel(tripSetupData: tripData)
+            }
+        }
     }
 }
 
@@ -115,4 +125,6 @@ private struct PackingChecklistScrollOffsetKey: PreferenceKey {
 
 #Preview {
     PackingChecklistView()
+        .environment(AppRouter())
+        .environment(AppSession.preview)
 }

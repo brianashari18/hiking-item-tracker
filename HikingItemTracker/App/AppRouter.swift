@@ -20,6 +20,11 @@ final class AppRouter {
         currentRoute = .tripIntro
     }
 
+    /// Navigasi ke Mountain Library (Library-first entry point)
+    func showMountainLibrary() {
+        currentRoute = .mountainLibrary
+    }
+
     func showTripSetup() {
         currentRoute = .tripSetup
     }

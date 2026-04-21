@@ -32,6 +32,8 @@ private struct AppRootView: View {
             OnboardingView()
         case .tripIntro:
             TripIntroView()
+        case .mountainLibrary:
+            MountainLibraryView()
         case .tripSetup:
             TripSetupView()
         case .packingChecklist:

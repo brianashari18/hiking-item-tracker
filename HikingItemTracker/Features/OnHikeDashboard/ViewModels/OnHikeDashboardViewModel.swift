@@ -26,7 +26,7 @@ final class OnHikeDashboardViewModel {
     }
 
     var durationText: String {
-        "\(mountain.duration) Hari Perjalanan"
+        "\(mountain.estimatedDurationDays) Hari Perjalanan"
     }
 
     var altitudeText: String {

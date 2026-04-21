@@ -9,14 +9,14 @@ import SwiftUI
 
 enum PackingChecklistGroupingMode: String, CaseIterable, Identifiable {
     case functional = "Fungsional"
-    case zone = "Zona"
+    case zone       = "Zona"
 
     var id: String { rawValue }
 
     var displayTitle: String {
         switch self {
         case .functional: return "Fungsional (Default)"
-        case .zone: return "Zona"
+        case .zone:       return "Zona"
         }
     }
 }
@@ -30,27 +30,35 @@ final class PackingChecklistViewModel {
 
     // MARK: - Computed Sections
 
-    /// Returns sections regrouped based on current grouping mode
     var displayedSections: [LogisticSectionModel] {
         switch groupingMode {
-        case .functional:
-            return rebuildFunctionalSections()
-        case .zone:
-            return rebuildZoneSections()
+        case .functional: return rebuildFunctionalSections()
+        case .zone:       return rebuildZoneSections()
         }
     }
 
-    var progressPercentage: CGFloat {
-        hikingTrip.progressPercentage
-    }
+    var progressPercentage: CGFloat { hikingTrip.progressPercentage }
+    var mountainName: String       { hikingTrip.mountainName }
+    var tripDate: String           { hikingTrip.tripDate }
 
-    var mountainName: String { hikingTrip.mountainName }
-    var tripDate: String { hikingTrip.tripDate }
-
-    // MARK: - Init
+    // MARK: - Init (Mock — untuk Preview & backward compat)
 
     init(hikingTrip: HikingTripModel = .mock) {
         self.hikingTrip = hikingTrip
+    }
+
+    // MARK: - Init (Real — dari TripSetupData via AppSession)
+
+    /// Inisialisasi dengan data nyata dari alur Library-first.
+    /// ChecklistGenerator.generate() secara otomatis membangun sections
+    /// berdasarkan metadata gunung dan input user.
+    init(tripSetupData: TripSetupData) {
+        let generatedSections = ChecklistGenerator.generate(from: tripSetupData)
+        self.hikingTrip = HikingTripModel(
+            mountainName: tripSetupData.mountain.name,
+            tripDate: tripSetupData.tripDateString,
+            sections: generatedSections
+        )
     }
 
     // MARK: - Actions
@@ -71,7 +79,6 @@ final class PackingChecklistViewModel {
     }
 
     func addItem(_ newItem: LogisticItem) {
-        // Find section matching the item's functional category
         if let sectionIndex = hikingTrip.sections.firstIndex(where: {
             if case .functional(let cat) = $0.categoryType {
                 return cat == newItem.functionalCategory
@@ -80,7 +87,6 @@ final class PackingChecklistViewModel {
         }) {
             hikingTrip.sections[sectionIndex].items.append(newItem)
         } else {
-            // Create new section for this category
             hikingTrip.sections.append(
                 LogisticSectionModel(
                     categoryType: .functional(newItem.functionalCategory),
@@ -90,15 +96,12 @@ final class PackingChecklistViewModel {
         }
     }
 
-    func selectItem(_ item: LogisticItem) {
-        selectedItem = item
-    }
+    func selectItem(_ item: LogisticItem)  { selectedItem = item }
 
     func deleteItem(_ item: LogisticItem) {
         for sectionIndex in hikingTrip.sections.indices {
             hikingTrip.sections[sectionIndex].items.removeAll { $0.id == item.id }
         }
-        // Remove empty sections
         hikingTrip.sections.removeAll { $0.items.isEmpty }
     }
 
@@ -112,10 +115,7 @@ final class PackingChecklistViewModel {
         ItemFunctionalCategory.allCases.compactMap { category in
             let items = allItems().filter { $0.functionalCategory == category }
             guard !items.isEmpty else { return nil }
-            return LogisticSectionModel(
-                categoryType: .functional(category),
-                items: items
-            )
+            return LogisticSectionModel(categoryType: .functional(category), items: items)
         }
     }
 
@@ -123,10 +123,7 @@ final class PackingChecklistViewModel {
         ItemZoneCategory.allCases.compactMap { zone in
             let items = allItems().filter { $0.zoneCategory == zone }
             guard !items.isEmpty else { return nil }
-            return LogisticSectionModel(
-                categoryType: .zone(zone),
-                items: items
-            )
+            return LogisticSectionModel(categoryType: .zone(zone), items: items)
         }
     }
 }

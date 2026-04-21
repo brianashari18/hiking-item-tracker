@@ -10,19 +10,26 @@ import Observation
 
 @Observable
 final class TripSetupViewModel {
-    let mountains: [Mountain]
-    
-    var selectedMountain: Mountain
+
+    // MARK: - Fixed (injected from MountainLibrary)
+    let selectedMountain: Mountain
+
+    // MARK: - User Input
     var selectedStartDate: Date = Date()
     var selectedEndDate: Date = Date()
     var fullName: String = ""
     var numberOfPeople: Int = 1
 
-    init(mountains: [Mountain] = Mountain.mocks) {
-        self.mountains = mountains
-        self.selectedMountain = mountains.first!
+    // MARK: - Init
+
+    /// Inisialisasi dengan gunung yang sudah dipilih dari MountainLibrary.
+    /// Mountain tidak lagi bisa diubah di layar ini.
+    init(selectedMountain: Mountain) {
+        self.selectedMountain = selectedMountain
     }
-    
+
+    // MARK: - Date Helpers
+
     var minimumStartDate: Date {
         Calendar.current.startOfDay(for: Date())
     }
@@ -31,16 +38,31 @@ final class TripSetupViewModel {
         max(selectedStartDate, minimumStartDate)
     }
 
+    func updateStartDate(_ date: Date) {
+        selectedStartDate = date
+        if selectedEndDate < date {
+            selectedEndDate = date
+        }
+    }
+
+    // MARK: - Validation
+
     var isFormValid: Bool {
         !fullName.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
             && selectedEndDate >= selectedStartDate
     }
 
-    func updateStartDate(_ date: Date) {
-        selectedStartDate = date
+    // MARK: - Data Bridge
 
-        if selectedEndDate < date {
-            selectedEndDate = date
-        }
+    /// Mengemas semua input user bersama mountain yang sudah dipilih
+    /// menjadi satu paket TripSetupData untuk diteruskan ke PackingChecklist.
+    func buildTripSetupData() -> TripSetupData {
+        TripSetupData(
+            mountain: selectedMountain,
+            startDate: selectedStartDate,
+            endDate: selectedEndDate,
+            fullName: fullName,
+            numberOfPeople: numberOfPeople
+        )
     }
 }
