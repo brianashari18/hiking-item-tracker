@@ -62,7 +62,20 @@ struct TripSetupView: View {
         .safeAreaInset(edge: .bottom) {
             VStack {
                 Button {
-                    router.showPackingChecklist()
+                    let dateFormatter = DateFormatter()
+                    dateFormatter.locale = Locale(identifier: "id_ID")
+                    dateFormatter.dateFormat = "dd MMM yyyy"
+                    let startDateStr = dateFormatter.string(from: viewModel.selectedStartDate)
+                    let endDateStr = dateFormatter.string(from: viewModel.selectedEndDate)
+                    
+                    let tripDateStr: String
+                    if Calendar.current.isDate(viewModel.selectedStartDate, inSameDayAs: viewModel.selectedEndDate) {
+                        tripDateStr = startDateStr
+                    } else {
+                        tripDateStr = "\(startDateStr) - \(endDateStr)"
+                    }
+
+                    router.showPackingChecklist(mountainName: viewModel.selectedMountain.name, tripDate: tripDateStr)
                 } label: {
                     Text("Mulai Perjalanan")
                 }

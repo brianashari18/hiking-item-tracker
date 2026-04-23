@@ -9,7 +9,15 @@ import SwiftUI
 
 struct PackingChecklistView: View {
     @Environment(AppRouter.self) private var router
-    @State private var viewModel = PackingChecklistViewModel()
+    @State private var viewModel: PackingChecklistViewModel
+
+    init(mountainName: String? = nil, tripDate: String? = nil) {
+        var trip = HikingTripModel.mock
+        if let mountainName = mountainName {
+            trip = HikingTripModel(mountainName: mountainName, tripDate: tripDate ?? "", sections: trip.sections)
+        }
+        _viewModel = State(initialValue: PackingChecklistViewModel(hikingTrip: trip))
+    }
 
     var body: some View {
         NavigationStack {

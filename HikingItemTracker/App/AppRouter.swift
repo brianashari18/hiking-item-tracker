@@ -24,8 +24,8 @@ final class AppRouter {
             currentRoute = .tripSetup(mountain)
     }
 
-    func showPackingChecklist() {
-        currentRoute = .packingChecklist
+    func showPackingChecklist(mountainName: String? = nil, tripDate: String? = nil) {
+        currentRoute = .packingChecklist(mountainName, tripDate)
     }
 
     func showOnHikeDashboard() {

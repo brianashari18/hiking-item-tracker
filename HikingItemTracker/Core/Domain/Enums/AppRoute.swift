@@ -10,7 +10,7 @@ enum AppRoute: Equatable {
     case onboarding
     case tripIntro
     case tripSetup(Mountain? = nil)
-    case packingChecklist
+    case packingChecklist(String? = nil, String? = nil)
     case onHikeDashboard
     case mountainLibrary
 }
