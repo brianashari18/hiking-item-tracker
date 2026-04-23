@@ -9,7 +9,7 @@
 
     struct MountainLibraryView: View {
         @State var searchedMountain: String = ""
-        @State var isSheetPresented : Bool = false
+        @State private var selectedMountain: Mountain?
         
         let columns = [
             GridItem(.flexible()),
@@ -19,11 +19,17 @@
         let allMountains: [Mountain] = Mountain.mocks
         
         var filteredMountains: [Mountain] {
-            if searchedMountain.isEmpty {
-                return allMountains
-            } else {
-                return allMountains.filter { $0.name.localizedCaseInsensitiveContains(searchedMountain) }
-            }
+            var result = allMountains
+                    if !searchedMountain.isEmpty {
+                        result = result.filter { $0.name.localizedCaseInsensitiveContains(searchedMountain) }
+                    }
+            
+            
+            if selectedGrade != "Semua" {
+                        result = result.filter { $0.grade == selectedGrade }
+                    }
+            
+            return result
         }
         
         @State private var selectedGrade: String = "Semua"
@@ -31,41 +37,44 @@
         
         var body: some View {
             NavigationStack {
-                Picker("Grade", selection: $selectedGrade) {
-                    ForEach(grades, id: \.self) { grade in
-                        Text(grade == "Semua" ? "Semua" : grade).tag(grade)
+                VStack {
+                    Picker("Grade", selection: $selectedGrade) {
+                        ForEach(grades, id: \.self) { grade in
+                            Text(grade == "Semua" ? "Semua" : grade).tag(grade)
+                        }
                     }
-                }
-                .pickerStyle(.segmented)
-                .padding(.horizontal)
-                
-                if filteredMountains.isEmpty {
-                    ContentUnavailableView.search(text: searchedMountain)
-                } else {
-                    ScrollView() {
-                        VStack(alignment: .leading) {
-                            LazyVGrid(columns: columns, spacing: 10) {
-                                ForEach(filteredMountains, id: \.self) { mountain in
-                                    Button {
-                                        isSheetPresented = true
-                                    } label: {
-                                        MountainCard(mountain: mountain)
-                                        
+                    .pickerStyle(.segmented)
+                    .padding(.horizontal)
+                    
+                    Group {
+                        if filteredMountains.isEmpty {
+                            ContentUnavailableView.search(text: searchedMountain)
+                        } else {
+                            ScrollView() {
+                                VStack(alignment: .leading) {
+                                    LazyVGrid(columns: columns, spacing: 10) {
+                                        ForEach(filteredMountains, id: \.self) { mountain in
+                                            Button {
+                                                selectedMountain = mountain
+                                            } label: {
+                                                MountainCard(mountain: mountain)
+                                                
+                                            }
+                                        }
                                     }
                                 }
+                                .padding()
                             }
+                            
                         }
-                        .padding()
-                    }
-                    .navigationTitle("Pilih Gunung")
-                    .navigationSubtitle("Jelajahi Berbagai Macam Gunung di Nusantara")
-                    .searchable(text: $searchedMountain, prompt: "Cari gunungmu")
-                    .sheet(isPresented: $isSheetPresented) {
-                        MountainDetailSheet()
                     }
                 }
-                
-                
+                .navigationTitle("Pilih Gunung")
+                .navigationSubtitle("Jelajahi Berbagai Macam Gunung di Nusantara")
+                .searchable(text: $searchedMountain, prompt: "Cari gunungmu")
+                .sheet(item: $selectedMountain) { mountain in
+                    MountainDetailSheet(mountain: mountain)
+                }
             }
             
         }

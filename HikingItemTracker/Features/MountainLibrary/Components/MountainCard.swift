@@ -70,5 +70,5 @@ struct MountainCard: View {
 }
 
 #Preview {
-    MountainCard(mountain: Mountain(name: "Gunung Mambulilling", grade: "II", location: "Sulawesi Barat", difficulty: "Mudah", height: 2873, duration: 2, status: "Aman", fauna: "Aman", terrain: "Berlumut tebal, berkabut, licin", equipment: "Trekking pole"))
+    MountainCard(mountain: Mountain(name: "Gunung Mambulilling", grade: "II", location: "Sulawesi Barat", difficulty: "Mudah", height: 2873, duration: 2, status: "Aman", fauna: "Aman", terrain: "Berlumut tebal, berkabut, licin"))
 }
