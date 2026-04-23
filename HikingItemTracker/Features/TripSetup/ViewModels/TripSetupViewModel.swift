@@ -19,33 +19,41 @@ final class TripSetupViewModel {
     var numberOfPeople: Int = 1
 
     init(mountains: [Mountain] = Mountain.mocks, preSelectedMountain: Mountain? = nil) {
-            self.mountains = mountains
-            
-            if let preSelected = preSelectedMountain {
-                self.selectedMountain = preSelected
-            } else {
-                self.selectedMountain = mountains.first!
-            }
+        self.mountains = mountains
+        
+        if let preSelected = preSelectedMountain {
+            self.selectedMountain = preSelected
+        } else {
+            self.selectedMountain = mountains.first!
         }
+        
+        let minDurationDays = self.selectedMountain.duration
+        self.selectedEndDate = Calendar.current.date(byAdding: .day, value: minDurationDays, to: self.selectedStartDate) ?? self.selectedStartDate
+    }
     
     var minimumStartDate: Date {
         Calendar.current.startOfDay(for: Date())
     }
 
     var minimumEndDate: Date {
-        max(selectedStartDate, minimumStartDate)
+        let minDurationDays = selectedMountain.duration
+        return Calendar.current.date(byAdding: .day, value: minDurationDays, to: selectedStartDate) ?? selectedStartDate
     }
 
     var isFormValid: Bool {
-        !fullName.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
-            && selectedEndDate >= selectedStartDate
+        let startOfEnd = Calendar.current.startOfDay(for: selectedEndDate)
+        let startOfMinEnd = Calendar.current.startOfDay(for: minimumEndDate)
+        return startOfEnd >= startOfMinEnd
     }
 
     func updateStartDate(_ date: Date) {
         selectedStartDate = date
 
-        if selectedEndDate < date {
-            selectedEndDate = date
+        let minDurationDays = selectedMountain.duration
+        let minEndDate = Calendar.current.date(byAdding: .day, value: minDurationDays, to: date) ?? date
+
+        if selectedEndDate < minEndDate {
+            selectedEndDate = minEndDate
         }
     }
 }

@@ -18,4 +18,5 @@ struct Mountain: Identifiable, Hashable {
     let status: String
     let fauna: String
     let terrain: String
+    let imageUrl: String
 }

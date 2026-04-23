@@ -5,10 +5,10 @@ struct MountainCard: View {
 
     var body: some View {
         ZStack(alignment: .bottomLeading) {
-            Image("img_mountain")
+            Image(mountain.imageUrl)
                 .resizable()
-                .scaledToFill()
-                .frame(maxWidth: .infinity)
+                .scaledToFit()
+                .frame(maxWidth: .infinity, maxHeight: 150)
                 .foregroundColor(.white.opacity(0.8))
             
             LinearGradient(
@@ -70,5 +70,5 @@ struct MountainCard: View {
 }
 
 #Preview {
-    MountainCard(mountain: Mountain(name: "Gunung Mambulilling", grade: "II", location: "Sulawesi Barat", difficulty: "Mudah", height: 2873, duration: 2, status: "Aman", fauna: "Aman", terrain: "Berlumut tebal, berkabut, licin"))
+    MountainCard(mountain: Mountain.mocks[0])
 }

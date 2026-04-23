@@ -1,10 +1,3 @@
-//
-//  TripSetupView.swift
-//  HikingItemTracker
-//
-//  Created by Brian Anashari on 15/04/26.
-//
-
 import SwiftUI
 
 struct TripSetupView: View {
@@ -13,44 +6,39 @@ struct TripSetupView: View {
     @State private var isSheetPresented: Bool = false
     
     init(mountain: Mountain? = nil) {
-            _viewModel = State(initialValue: TripSetupViewModel(preSelectedMountain: mountain))
-        }
+        _viewModel = State(initialValue: TripSetupViewModel(preSelectedMountain: mountain))
+    }
 
     var body: some View {
         @Bindable var viewModel = viewModel
 
         ScrollView {
-            VStack(spacing: 40) {
-                Text("Lengkapi Data Pendakianmu")
-                    .font(.title2)
-                    .fontWeight(.bold)
-                    .multilineTextAlignment(.center)
+            VStack(spacing: 28) {
                 
-                Image("img_mountain")
-                    .frame(width: 350, height: 350)
-                    .background(.primary.opacity(0.3))
-                    .cornerRadius(20)
-                
-                VStack(spacing: 16) {
-                    TripFormSection(title: "Kamu Mau Naik ke Gunung Apa?") {
-                        Button {
-                            isSheetPresented = true
-                        } label: {
-                            HStack {
-                                Text(viewModel.selectedMountain.name)
-                                    .foregroundStyle(.primary)
-                                Spacer()
-                                Image(systemName: "chevron.down")
-                                    .font(.caption)
-                                    .foregroundStyle(.secondary)
-                            }
-                            .padding()
-                            .background(.primary.opacity(0.05))
-                            .clipShape(RoundedRectangle(cornerRadius: 10))
+                VStack(alignment: .leading, spacing: 16) {
+                    Image(viewModel.selectedMountain.imageUrl)
+                        .resizable()
+                        .scaledToFill()
+                        .frame(maxWidth: .infinity)
+                        .frame(height: 280)
+                        .clipped()
+                    
+                    VStack(alignment: .leading, spacing: 6) {
+                        Text(viewModel.selectedMountain.name)
+                            .font(.largeTitle)
+                            .fontWeight(.heavy)
+                        
+                        HStack {
+                            Image(systemName: "mappin.and.ellipse")
+                            Text("\(viewModel.selectedMountain.location) • \(viewModel.selectedMountain.difficulty)")
                         }
-                        .buttonStyle(.plain)
+                        .font(.headline)
+                        .foregroundStyle(.secondary)
                     }
-
+                    .padding(.horizontal, 30)
+                }
+                
+                VStack(spacing: 24) {
                     TripFormSection(title: "Kapan Jadwal Pendakiannya?") {
                         TripDateRangeField(
                             startDate: $viewModel.selectedStartDate,
@@ -61,18 +49,18 @@ struct TripSetupView: View {
                         )
                     }
 
-                    TripFormSection(title: "Nama Kamu Siapa?") {
-                        TextField("Masukkan Namamu", text: $viewModel.fullName)
-                            .padding()
-                            .background(.primary.opacity(0.05))
-                            .clipShape(RoundedRectangle(cornerRadius: 10))
-                    }
-
                     TripFormSection(title: "Berapa Orang yang akan Ikut Mendaki?") {
                         PeopleCounterField(numberOfPeople: $viewModel.numberOfPeople)
                     }
                 }
+                .padding(.horizontal, 30)
                 
+            }
+            .padding(.horizontal, 30)
+        }
+        .ignoresSafeArea(edges: .top)
+        .safeAreaInset(edge: .bottom) {
+            VStack {
                 Button {
                     router.showPackingChecklist()
                 } label: {
@@ -86,15 +74,16 @@ struct TripSetupView: View {
                 .fontWeight(.bold)
                 .clipShape(RoundedRectangle(cornerRadius: 20))
                 .disabled(!viewModel.isFormValid)
+                .padding(.horizontal, 30)
+                .padding(.bottom, 10)
             }
-            .padding(20)
-            .sheet(isPresented: $isSheetPresented) {
-                MountainPickerField(
-                    mountains: viewModel.mountains,
-                    isSheetPresented: $isSheetPresented,
-                    selectedMountain: $viewModel.selectedMountain
-                )
-            }
+            .padding(.top, 16)
+            .background(
+                Rectangle()
+                    .fill(.background)
+                    .ignoresSafeArea(edges: .bottom)
+                    .shadow(color: .black.opacity(0.05), radius: 8, x: 0, y: -4)
+            )
         }
     }
 }

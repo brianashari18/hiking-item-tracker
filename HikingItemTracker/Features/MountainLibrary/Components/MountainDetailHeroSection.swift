@@ -13,7 +13,7 @@ struct MountainDetailHeroSection: View {
     
     var body: some View {
         ZStack(alignment: .bottomLeading) {
-            Image("img_mountain")
+            Image(mountain.imageUrl)
                 .resizable()
                 .scaledToFit()
                 .frame(maxWidth: .infinity, maxHeight: 450)
