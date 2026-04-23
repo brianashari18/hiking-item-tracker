@@ -11,6 +11,8 @@
         @State var searchedMountain: String = ""
         @State private var selectedMountain: Mountain?
         
+        @Environment(AppRouter.self) private var router
+        
         let columns = [
             GridItem(.flexible()),
             GridItem(.flexible())
@@ -74,6 +76,7 @@
                 .searchable(text: $searchedMountain, prompt: "Cari gunungmu")
                 .sheet(item: $selectedMountain) { mountain in
                     MountainDetailSheet(mountain: mountain)
+                        .environment(router)
                 }
             }
             
@@ -82,4 +85,5 @@
 
     #Preview {
         MountainLibraryView()
+            .environment(AppRouter())
     }

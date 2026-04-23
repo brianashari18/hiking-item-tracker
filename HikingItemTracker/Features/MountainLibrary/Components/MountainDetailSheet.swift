@@ -11,6 +11,7 @@ struct MountainDetailSheet: View {
     let mountain: Mountain
 
     @Environment(\.dismiss) var dismiss
+    @Environment(AppRouter.self) private var router
     
     var body: some View {
         NavigationStack {
@@ -41,8 +42,12 @@ struct MountainDetailSheet: View {
                         
                         MountainDetailCTAButton(
                             gradeGradient: gradeGradient,
-                            gradeAccentColor: gradeAccentColor
-                        )
+                            gradeAccentColor: gradeAccentColor,
+                            selectedMountain: mountain
+                        ) {
+                            dismiss()
+                            router.showTripSetup(mountain: mountain)
+                        }
 
                     }
                     .padding(20)
@@ -96,4 +101,5 @@ struct MountainDetailSheet: View {
 
 #Preview {
     MountainDetailSheet(mountain: Mountain.mocks[0])
+        .environment(AppRouter())
 }

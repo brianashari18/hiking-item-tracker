@@ -18,10 +18,15 @@ final class TripSetupViewModel {
     var fullName: String = ""
     var numberOfPeople: Int = 1
 
-    init(mountains: [Mountain] = Mountain.mocks) {
-        self.mountains = mountains
-        self.selectedMountain = mountains.first!
-    }
+    init(mountains: [Mountain] = Mountain.mocks, preSelectedMountain: Mountain? = nil) {
+            self.mountains = mountains
+            
+            if let preSelected = preSelectedMountain {
+                self.selectedMountain = preSelected
+            } else {
+                self.selectedMountain = mountains.first!
+            }
+        }
     
     var minimumStartDate: Date {
         Calendar.current.startOfDay(for: Date())

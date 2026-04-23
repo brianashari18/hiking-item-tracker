@@ -10,10 +10,12 @@ import SwiftUI
 struct MountainDetailCTAButton: View {
     let gradeGradient: LinearGradient
     let gradeAccentColor: Color
-
+    let selectedMountain: Mountain
+    let action: () -> Void
+    
     var body: some View {
         Button {
-            
+            action()
         } label: {
             HStack(spacing: 10) {
                 Image(systemName: "checkmark.circle.fill")

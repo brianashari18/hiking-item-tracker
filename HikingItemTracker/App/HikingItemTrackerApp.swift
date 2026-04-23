@@ -32,12 +32,14 @@ private struct AppRootView: View {
             OnboardingView()
         case .tripIntro:
             TripIntroView()
-        case .tripSetup:
-            TripSetupView()
+        case .tripSetup(let selectedMountain):
+            TripSetupView(mountain: selectedMountain)
         case .packingChecklist:
             PackingChecklistView()
         case .onHikeDashboard:
             OnHikeDashboardView()
+        case .mountainLibrary:
+            MountainLibraryView()
         }
     }
 }

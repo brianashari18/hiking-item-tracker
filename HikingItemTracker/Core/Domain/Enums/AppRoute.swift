@@ -5,11 +5,12 @@
 //  Created by Brian Anashari on 20/04/26.
 //
 
-enum AppRoute {
+enum AppRoute: Equatable {
     case splash
     case onboarding
     case tripIntro
-    case tripSetup
+    case tripSetup(Mountain? = nil)
     case packingChecklist
     case onHikeDashboard
+    case mountainLibrary
 }

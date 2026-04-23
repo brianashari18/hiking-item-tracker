@@ -9,8 +9,12 @@ import SwiftUI
 
 struct TripSetupView: View {
     @Environment(AppRouter.self) private var router
-    @State private var viewModel = TripSetupViewModel()
+    @State var viewModel = TripSetupViewModel()
     @State private var isSheetPresented: Bool = false
+    
+    init(mountain: Mountain? = nil) {
+            _viewModel = State(initialValue: TripSetupViewModel(preSelectedMountain: mountain))
+        }
 
     var body: some View {
         @Bindable var viewModel = viewModel

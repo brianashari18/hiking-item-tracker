@@ -20,8 +20,8 @@ final class AppRouter {
         currentRoute = .tripIntro
     }
 
-    func showTripSetup() {
-        currentRoute = .tripSetup
+    func showTripSetup(mountain: Mountain? = nil) {
+            currentRoute = .tripSetup(mountain)
     }
 
     func showPackingChecklist() {
@@ -33,6 +33,10 @@ final class AppRouter {
     }
 
     func showTripSetupFromFinish() {
-        currentRoute = .tripSetup
+        currentRoute = .tripSetup()
+    }
+    
+    func showMountainLibrary() {
+        currentRoute = .mountainLibrary
     }
 }

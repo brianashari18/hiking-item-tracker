@@ -87,7 +87,7 @@ struct OnboardingView: View {
         }
 
         session.hasCompletedOnboarding = true
-        router.showTripIntro()
+        router.showMountainLibrary()
     }
 }
 
