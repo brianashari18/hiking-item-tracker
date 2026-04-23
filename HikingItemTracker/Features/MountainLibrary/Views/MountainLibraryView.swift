@@ -8,20 +8,30 @@
 import SwiftUI
 
 struct MountainLibraryView: View {
+    @State var searchedMountain: String = ""
+    
     let columns = [
         GridItem(.flexible()),
         GridItem(.flexible())
     ]
     
     var body: some View {
-        ScrollView {
-            LazyVGrid(columns: columns, spacing: 10) {
-                ForEach(0..<20) { index in
-                    MountainCard()
+        NavigationStack {
+            ScrollView() {
+                VStack(alignment: .leading) {
+                    LazyVGrid(columns: columns, spacing: 10) {
+                        ForEach(0..<20) { index in
+                            MountainCard()
+                        }
+                    }
                 }
+                .padding()
             }
-            .padding()
+            .navigationTitle("Pilih Gunung")
+            .navigationSubtitle("Jelajahi Berbagai Macam Gunung di Nusantara")
+            .searchable(text: $searchedMountain, prompt: "Cari gunungmu")
         }
+        
     }
 }
 
