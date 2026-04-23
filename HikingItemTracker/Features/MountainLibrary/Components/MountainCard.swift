@@ -1,6 +1,8 @@
 import SwiftUI
 
 struct MountainCard: View {
+    let mountain: Mountain
+
     var body: some View {
         ZStack(alignment: .bottomLeading) {
             Image("img_mountain")
@@ -17,30 +19,29 @@ struct MountainCard: View {
             .frame(maxWidth: .infinity)
             
             VStack(alignment: .leading, spacing: 8) {
-                Text("Gunung Rinjani")
+                Text(mountain.name)
                     .font(.body)
                     .fontWeight(.bold)
                     .foregroundColor(.white)
                     .lineLimit(1)
                 
-                
                 VStack(alignment: .leading, spacing: 4) {
                     HStack(spacing: 4) {
                         Image(systemName: "mappin.circle.fill")
-                        Text("Nusa Tenggara Barat")
+                        Text(mountain.location)
                     }
                     
                     HStack {
                         HStack(spacing: 4) {
                             Image(systemName: "arrow.up.circle.fill")
-                            Text("3.726 mdpl")
+                            Text(mountain.difficulty)
                         }
                         
                         Spacer()
                         
                         HStack {
-                            Image(systemName: "arrow.up.circle.fill")
-                            Text("1 Hari")
+                            Image(systemName: "clock.fill")
+                            Text("\(mountain.duration) Hari")
                         }
                     }
                 }
@@ -54,7 +55,7 @@ struct MountainCard: View {
         .overlay(alignment: .topTrailing) {
             HStack(spacing: 4) {
                 Image(systemName: "figure.hiking")
-                Text("Grade V")
+                Text("Grade \(mountain.grade)")
             }
             .font(.caption2)
             .fontWeight(.bold)
@@ -69,5 +70,5 @@ struct MountainCard: View {
 }
 
 #Preview {
-    MountainCard()
+    MountainCard(mountain: Mountain(name: "Gunung Mambulilling", grade: "II", location: "Sulawesi Barat", difficulty: "Mudah", height: 2873, duration: 2, status: "Aman", fauna: "Aman", terrain: "Berlumut tebal, berkabut, licin", equipment: "Trekking pole"))
 }
