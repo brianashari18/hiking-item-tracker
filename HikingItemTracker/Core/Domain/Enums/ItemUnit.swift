@@ -13,6 +13,7 @@ enum ItemUnit: String, CaseIterable, Identifiable {
     case ml = "ml"
     case l = "L"
     case pcs = "pcs"
+    case set = "set"
 
     var id: String { rawValue }
 }

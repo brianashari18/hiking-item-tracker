@@ -209,7 +209,7 @@ struct AddEditItemView: View {
             quantity: 100,
             unit: .gr,
             ownership: .kelompok,
-            functionalCategory: .logisticsAndConsumption,
+            functionalCategory: .logisticAndFood,
             isEssential: true,
             isPacked: true
         )

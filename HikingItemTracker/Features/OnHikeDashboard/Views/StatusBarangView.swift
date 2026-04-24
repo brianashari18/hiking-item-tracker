@@ -56,7 +56,7 @@ struct StatusBarangView: View {
             }
             .background(Color(.systemGroupedBackground))
             .navigationTitle("Status Barang")
-            .navigationBarTitleDisplayMode(.large)
+            .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
                     Button {
@@ -67,9 +67,9 @@ struct StatusBarangView: View {
                     }
                 }
 
-//                ToolbarItem(placement: .topBarTrailing) {
-//                    HikeProgressRing(progress: progressPercentage, size: 48)
-//                }
+                ToolbarItem(placement: .topBarTrailing) {
+                    HikeProgressRing(progress: progressPercentage, size: 48)
+                }
             }
         }
     }

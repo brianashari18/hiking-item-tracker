@@ -11,12 +11,31 @@ struct UnitSelectorSegmented: View {
     @Binding var selectedUnit: ItemUnit
 
     var body: some View {
-        Picker("Pilih Satuan", selection: $selectedUnit) {
-            ForEach(ItemUnit.allCases) { unit in
-                Text(unit.rawValue).tag(unit)
+        HStack {
+            Text("Unit Barang")
+                .font(.body)
+
+            Spacer()
+
+            Menu {
+                Picker("Pilih Unit", selection: $selectedUnit) {
+                    ForEach(ItemUnit.allCases) { unit in
+                        Text(unit.rawValue).tag(unit)
+                    }
+                }
+            } label: {
+                HStack(spacing: 4) {
+                    Text(selectedUnit.rawValue)
+                        .font(.body)
+                        .foregroundStyle(.secondary)
+                        .lineLimit(1)
+                    Image(systemName: "chevron.up.chevron.down")
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                }
             }
+            .tint(.primary)
         }
-        .pickerStyle(.segmented)
     }
 }
 

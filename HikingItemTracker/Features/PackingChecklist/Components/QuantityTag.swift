@@ -17,7 +17,7 @@ struct QuantityTag: View {
             .foregroundStyle(.white)
             .padding(.horizontal, 8)
             .padding(.vertical, 4)
-            .background(.green.opacity(0.5))
+            .background(.cyan.opacity(0.5))
             .clipShape(RoundedRectangle(cornerRadius: 10))
     }
 }

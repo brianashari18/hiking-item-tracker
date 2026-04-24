@@ -11,28 +11,31 @@ struct OwnershipPickerMenuButton: View {
     @Binding var selectedOwnership: ItemOwnership
 
     var body: some View {
-        Menu {
-            Picker("Pilih Kepemilikan", selection: $selectedOwnership) {
-                ForEach(ItemOwnership.allCases) { ownership in
-                    Text(ownership.rawValue).tag(ownership)
+        HStack {
+            Text("Kepemilikan Barang")
+                .font(.body)
+
+            Spacer()
+
+            Menu {
+                Picker("Pilih Kepemilikan", selection: $selectedOwnership) {
+                    ForEach(ItemOwnership.allCases) { ownership in
+                        Text(ownership.rawValue).tag(ownership)
+                    }
+                }
+            } label: {
+                HStack(spacing: 4) {
+                    Text(selectedOwnership.rawValue)
+                        .font(.body)
+                        .foregroundStyle(.secondary)
+                        .lineLimit(1)
+                    Image(systemName: "chevron.up.chevron.down")
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
                 }
             }
-        } label: {
-            HStack {
-                Text(selectedOwnership.rawValue)
-                    .font(.body)
-                    .foregroundStyle(.primary)
-
-                Spacer()
-
-                Image(systemName: "chevron.down")
-                    .font(.body)
-                    .foregroundStyle(.primary)
-            }
-            .background(Color(.systemBackground))
-            .clipShape(RoundedRectangle(cornerRadius: 12))
+            .tint(.primary)
         }
-        .tint(.primary)
     }
 }
 

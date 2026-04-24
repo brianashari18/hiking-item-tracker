@@ -8,38 +8,34 @@
 import Foundation
 
 enum ItemFunctionalCategory: String, CaseIterable, Identifiable {
-    case additionalEquipment    = "Perlengkapan Tambahan"
-    case healthAndSanitation    = "Kesehatan dan Sanitasi"
-    case logisticsAndConsumption = "Perlengkapan Logistik dan Konsumsi"
-    case cookingEquipment       = "Perlengkapan Memasak"
-    case clothingEquipment      = "Perlengkapan Pakaian"
-    case sleepingEquipment      = "Perlengkapan Tidur"
-    case tentEquipment          = "Perlengkapan Tenda"
+    case shelter            = "Shelter"
+    case personalItem       = "Barang Pribadi"
+    case logisticAndFood    = "Logistik & Makanan"
+    case safetyTools        = "Safety Tools"
+    case medicalKit         = "P3K"
 
     var id: String { rawValue }
 
     var iconName: String {
         switch self {
-        case .additionalEquipment:    return "backpack"
-        case .healthAndSanitation:   return "cross.case"
-        case .logisticsAndConsumption: return "cart"
-        case .cookingEquipment:      return "flame"
-        case .clothingEquipment:     return "tshirt"
-        case .sleepingEquipment:     return "moon.zzz"
-        case .tentEquipment:         return "house"
+        case .shelter:           return "tent"
+        case .personalItem:      return "person.fill"
+        case .logisticAndFood:   return "fork.knife"
+        case .safetyTools:       return "gearshape.fill"
+        case .medicalKit:        return "cross.case"
         }
     }
 
     var defaultZone: ItemZoneCategory {
         switch self {
-        case .additionalEquipment, .healthAndSanitation:
-            return .top
-        case .logisticsAndConsumption, .cookingEquipment:
-            return .upperMiddle
-        case .clothingEquipment, .sleepingEquipment:
-            return .lowerMiddle
-        case .tentEquipment:
+        case .shelter:
             return .bottom
+        case .personalItem:
+            return .lowerMiddle
+        case .logisticAndFood:
+            return .upperMiddle
+        case .safetyTools, .medicalKit:
+            return .top
         }
     }
 }

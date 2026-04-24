@@ -12,134 +12,91 @@ extension HikingTripModel {
         mountainName: "Gunung Rinjani",
         tripDate: "24 November 2027",
         sections: [
-            // MARK: - Perlengkapan Tenda
+            // MARK: - Shelter (Tenda & Tidur)
             LogisticSectionModel(
-                categoryType: .functional(.tentEquipment),
+                categoryType: .functional(.shelter),
                 items: [
-                    LogisticItem(name: "Tenda Dome 4P", quantity: 1, unit: .pcs, ownership: .kelompok,
-                                 functionalCategory: .tentEquipment, zoneCategory: .bottom, isEssential: true, isPacked: true),
-                    LogisticItem(name: "Terpal Groundsheet", quantity: 1, unit: .pcs, ownership: .kelompok,
-                                 functionalCategory: .tentEquipment, zoneCategory: .bottom, isEssential: true, isPacked: false),
-                    LogisticItem(name: "Pasak Tenda Cadangan", quantity: 10, unit: .pcs, ownership: .pribadi,
-                                 functionalCategory: .tentEquipment, zoneCategory: .outer, isEssential: false, isPacked: false),
-                    LogisticItem(name: "Tali Guyline", quantity: 5, unit: .pcs, ownership: .kelompok,
-                                 functionalCategory: .tentEquipment, zoneCategory: .outer, isEssential: false, isPacked: false),
+                    LogisticItem(name: "Tenda", quantity: 1, unit: .pcs, ownership: .kelompok, functionalCategory: .shelter, zoneCategory: .bottom, isEssential: true, isPacked: false),
+                    LogisticItem(name: "Sleeping Bag", quantity: 1, unit: .pcs, ownership: .pribadi, functionalCategory: .shelter, zoneCategory: .bottom, isEssential: true, isPacked: false),
+                    LogisticItem(name: "Matras", quantity: 1, unit: .pcs, ownership: .pribadi, functionalCategory: .shelter, zoneCategory: .bottom, isEssential: true, isPacked: false),
+                    LogisticItem(name: "Hammock", quantity: 1, unit: .pcs, ownership: .pribadi, functionalCategory: .shelter, zoneCategory: .bottom, isEssential: false, isPacked: false),
+                    LogisticItem(name: "Tali Tenda", quantity: 5, unit: .pcs, ownership: .kelompok, functionalCategory: .shelter, zoneCategory: .outer, isEssential: true, isPacked: false),
+                    LogisticItem(name: "Pasak", quantity: 10, unit: .pcs, ownership: .kelompok, functionalCategory: .shelter, zoneCategory: .outer, isEssential: true, isPacked: false),
+                    LogisticItem(name: "Rangka Tenda", quantity: 1, unit: .pcs, ownership: .kelompok, functionalCategory: .shelter, zoneCategory: .outer, isEssential: true, isPacked: false),
+                    LogisticItem(name: "Flysheet", quantity: 1, unit: .pcs, ownership: .kelompok, functionalCategory: .shelter, zoneCategory: .outer, isEssential: true, isPacked: false),
                 ]
             ),
 
-            // MARK: - Perlengkapan Tidur
+            // MARK: - Barang Pribadi
             LogisticSectionModel(
-                categoryType: .functional(.sleepingEquipment),
+                categoryType: .functional(.personalItem),
                 items: [
-                    LogisticItem(name: "Sleeping Bag -5°C", quantity: 1, unit: .pcs, ownership: .pribadi,
-                                 functionalCategory: .sleepingEquipment, zoneCategory: .bottom, isEssential: true, isPacked: true),
-                    LogisticItem(name: "Sleeping Pad / Matras", quantity: 1, unit: .pcs, ownership: .pribadi,
-                                 functionalCategory: .sleepingEquipment, zoneCategory: .bottom, isEssential: true, isPacked: false),
-                    LogisticItem(name: "Sarung Tangan Tidur", quantity: 1, unit: .pcs, ownership: .pribadi,
-                                 functionalCategory: .sleepingEquipment, zoneCategory: .upperMiddle, isEssential: false, isPacked: false),
-                    LogisticItem(name: "Balaclava", quantity: 1, unit: .pcs, ownership: .pribadi,
-                                 functionalCategory: .sleepingEquipment, zoneCategory: .upperMiddle, isEssential: false, isPacked: true),
+                    LogisticItem(name: "Sepatu Gunung", quantity: 1, unit: .pcs, ownership: .pribadi, functionalCategory: .personalItem, zoneCategory: .outer, isEssential: true, isPacked: false),
+                    LogisticItem(name: "Jaket Gunung", quantity: 1, unit: .pcs, ownership: .pribadi, functionalCategory: .personalItem, zoneCategory: .upperMiddle, isEssential: true, isPacked: false),
+                    LogisticItem(name: "Jas Hujan", quantity: 1, unit: .pcs, ownership: .pribadi, functionalCategory: .personalItem, zoneCategory: .outer, isEssential: true, isPacked: false),
+                    LogisticItem(name: "Sarung Tangan", quantity: 1, unit: .pcs, ownership: .pribadi, functionalCategory: .personalItem, zoneCategory: .upperMiddle, isEssential: true, isPacked: false),
+                    LogisticItem(name: "KTP", quantity: 1, unit: .pcs, ownership: .pribadi, functionalCategory: .personalItem, zoneCategory: .top, isEssential: true, isPacked: false),
+                    LogisticItem(name: "Surat Izin Pendakian", quantity: 1, unit: .pcs, ownership: .kelompok, functionalCategory: .personalItem, zoneCategory: .top, isEssential: true, isPacked: false),
+                    LogisticItem(name: "Sandal", quantity: 1, unit: .pcs, ownership: .pribadi, functionalCategory: .personalItem, zoneCategory: .outer, isEssential: false, isPacked: false),
+                    LogisticItem(name: "Sunscreen", quantity: 1, unit: .pcs, ownership: .pribadi, functionalCategory: .personalItem, zoneCategory: .top, isEssential: true, isPacked: false),
+                    LogisticItem(name: "Peralatan Mandi", quantity: 1, unit: .pcs, ownership: .pribadi, functionalCategory: .personalItem, zoneCategory: .outer, isEssential: false, isPacked: false),
+                    LogisticItem(name: "Kaos Kaki", quantity: 2, unit: .pcs, ownership: .pribadi, functionalCategory: .personalItem, zoneCategory: .lowerMiddle, isEssential: true, isPacked: false),
+                    LogisticItem(name: "Pakaian Layering", quantity: 1, unit: .pcs, ownership: .pribadi, functionalCategory: .personalItem, zoneCategory: .lowerMiddle, isEssential: true, isPacked: false),
+                    LogisticItem(name: "Baju Ganti", quantity: 2, unit: .pcs, ownership: .pribadi, functionalCategory: .personalItem, zoneCategory: .lowerMiddle, isEssential: true, isPacked: false),
+                    LogisticItem(name: "Celana Ganti", quantity: 2, unit: .pcs, ownership: .pribadi, functionalCategory: .personalItem, zoneCategory: .lowerMiddle, isEssential: true, isPacked: false),
+                    LogisticItem(name: "Pakaian Dalam Ganti", quantity: 3, unit: .pcs, ownership: .pribadi, functionalCategory: .personalItem, zoneCategory: .lowerMiddle, isEssential: true, isPacked: false),
+                    LogisticItem(name: "Masker", quantity: 3, unit: .pcs, ownership: .pribadi, functionalCategory: .personalItem, zoneCategory: .top, isEssential: false, isPacked: false),
+                    LogisticItem(name: "Topi", quantity: 1, unit: .pcs, ownership: .pribadi, functionalCategory: .personalItem, zoneCategory: .top, isEssential: false, isPacked: false),
                 ]
             ),
 
-            // MARK: - Perlengkapan Pakaian
+            // MARK: - Logistik & Makanan
             LogisticSectionModel(
-                categoryType: .functional(.clothingEquipment),
+                categoryType: .functional(.logisticAndFood),
                 items: [
-                    LogisticItem(name: "Base Layer Thermal", quantity: 2, unit: .pcs, ownership: .pribadi,
-                                 functionalCategory: .clothingEquipment, zoneCategory: .upperMiddle, isEssential: true, isPacked: true),
-                    LogisticItem(name: "Celana Trekking", quantity: 2, unit: .pcs, ownership: .pribadi,
-                                 functionalCategory: .clothingEquipment, zoneCategory: .lowerMiddle, isEssential: true, isPacked: false),
-                    LogisticItem(name: "Raincoat / Poncho", quantity: 1, unit: .pcs, ownership: .pribadi,
-                                 functionalCategory: .clothingEquipment, zoneCategory: .outer, isEssential: true, isPacked: false),
-                    LogisticItem(name: "Kaos Kaki Wool", quantity: 3, unit: .pcs, ownership: .pribadi,
-                                 functionalCategory: .clothingEquipment, zoneCategory: .lowerMiddle, isEssential: true, isPacked: false),
-                    LogisticItem(name: "Gaiters", quantity: 1, unit: .pcs, ownership: .pribadi,
-                                 functionalCategory: .clothingEquipment, zoneCategory: .outer, isEssential: false, isPacked: false),
-                    LogisticItem(name: "Sarung Tangan", quantity: 1, unit: .pcs, ownership: .pribadi,
-                                 functionalCategory: .clothingEquipment, zoneCategory: .upperMiddle, isEssential: true, isPacked: true),
-                    LogisticItem(name: "Buff / Neck Gaiter", quantity: 1, unit: .pcs, ownership: .pribadi,
-                                 functionalCategory: .clothingEquipment, zoneCategory: .upperMiddle, isEssential: false, isPacked: false),
+                    LogisticItem(name: "Nesting (1 Set)", quantity: 1, unit: .pcs, ownership: .kelompok, functionalCategory: .logisticAndFood, zoneCategory: .bottom, isEssential: true, isPacked: false),
+                    LogisticItem(name: "Korek Api", quantity: 2, unit: .pcs, ownership: .kelompok, functionalCategory: .logisticAndFood, zoneCategory: .top, isEssential: true, isPacked: false),
+                    LogisticItem(name: "Botol Air", quantity: 2, unit: .pcs, ownership: .pribadi, functionalCategory: .logisticAndFood, zoneCategory: .outer, isEssential: true, isPacked: false),
+                    LogisticItem(name: "Makanan Ringan", quantity: 5, unit: .pcs, ownership: .pribadi, functionalCategory: .logisticAndFood, zoneCategory: .upperMiddle, isEssential: true, isPacked: false),
+                    LogisticItem(name: "Gas Kaleng", quantity: 2, unit: .pcs, ownership: .kelompok, functionalCategory: .logisticAndFood, zoneCategory: .bottom, isEssential: true, isPacked: false),
+                    LogisticItem(name: "Filter Air Portable", quantity: 1, unit: .pcs, ownership: .kelompok, functionalCategory: .logisticAndFood, zoneCategory: .outer, isEssential: false, isPacked: false),
+                    LogisticItem(name: "Piring", quantity: 1, unit: .pcs, ownership: .pribadi, functionalCategory: .logisticAndFood, zoneCategory: .bottom, isEssential: false, isPacked: false),
+                    LogisticItem(name: "Sendok", quantity: 1, unit: .pcs, ownership: .pribadi, functionalCategory: .logisticAndFood, zoneCategory: .top, isEssential: false, isPacked: false),
                 ]
             ),
 
-            // MARK: - Perlengkapan Memasak
+            // MARK: - Safety Tools
             LogisticSectionModel(
-                categoryType: .functional(.cookingEquipment),
+                categoryType: .functional(.safetyTools),
                 items: [
-                    LogisticItem(name: "Kompor Portable", quantity: 1, unit: .pcs, ownership: .sewaan,
-                                 functionalCategory: .cookingEquipment, zoneCategory: .bottom, isEssential: true, isPacked: false),
-                    LogisticItem(name: "Gas Kompor 230gr", quantity: 2, unit: .pcs, ownership: .kelompok,
-                                 functionalCategory: .cookingEquipment, zoneCategory: .bottom, isEssential: true, isPacked: false),
-                    LogisticItem(name: "Nesting / Panci Set", quantity: 1, unit: .pcs, ownership: .sewaan,
-                                 functionalCategory: .cookingEquipment, zoneCategory: .bottom, isEssential: true, isPacked: false),
-                    LogisticItem(name: "Spatула / Sendok Masak", quantity: 1, unit: .pcs, ownership: .kelompok,
-                                 functionalCategory: .cookingEquipment, zoneCategory: .bottom, isEssential: false, isPacked: false),
-                    LogisticItem(name: "Wind Shield Kompor", quantity: 1, unit: .pcs, ownership: .kelompok,
-                                 functionalCategory: .cookingEquipment, zoneCategory: .bottom, isEssential: false, isPacked: false),
+                    LogisticItem(name: "Headlamp", quantity: 1, unit: .pcs, ownership: .pribadi, functionalCategory: .safetyTools, zoneCategory: .top, isEssential: true, isPacked: false),
+                    LogisticItem(name: "Tali Prusik", quantity: 1, unit: .pcs, ownership: .pribadi, functionalCategory: .safetyTools, zoneCategory: .outer, isEssential: false, isPacked: false),
+                    LogisticItem(name: "Alat Jahit", quantity: 1, unit: .pcs, ownership: .kelompok, functionalCategory: .safetyTools, zoneCategory: .top, isEssential: false, isPacked: false),
+                    LogisticItem(name: "Trekking Pole", quantity: 1, unit: .pcs, ownership: .pribadi, functionalCategory: .safetyTools, zoneCategory: .outer, isEssential: false, isPacked: false),
+                    LogisticItem(name: "Pisau Lipat", quantity: 1, unit: .pcs, ownership: .pribadi, functionalCategory: .safetyTools, zoneCategory: .top, isEssential: true, isPacked: false),
+                    LogisticItem(name: "Peta", quantity: 1, unit: .pcs, ownership: .kelompok, functionalCategory: .safetyTools, zoneCategory: .top, isEssential: true, isPacked: false),
+                    LogisticItem(name: "Kompas", quantity: 1, unit: .pcs, ownership: .kelompok, functionalCategory: .safetyTools, zoneCategory: .top, isEssential: true, isPacked: false),
                 ]
             ),
 
-            // MARK: - Perlengkapan Logistik dan Konsumsi
+            // MARK: - P3K
             LogisticSectionModel(
-                categoryType: .functional(.logisticsAndConsumption),
+                categoryType: .functional(.medicalKit),
                 items: [
-                    LogisticItem(name: "Beras", quantity: 2, unit: .kg, ownership: .kelompok,
-                                 functionalCategory: .logisticsAndConsumption, zoneCategory: .bottom, isEssential: true, isPacked: false),
-                    LogisticItem(name: "Mie Instan", quantity: 10, unit: .pcs, ownership: .kelompok,
-                                 functionalCategory: .logisticsAndConsumption, zoneCategory: .bottom, isEssential: true, isPacked: true),
-                    LogisticItem(name: "Energen / Oatmeal", quantity: 5, unit: .pcs, ownership: .pribadi,
-                                 functionalCategory: .logisticsAndConsumption, zoneCategory: .upperMiddle, isEssential: false, isPacked: false),
-                    LogisticItem(name: "Air Mineral 1.5L", quantity: 2, unit: .pcs, ownership: .pribadi,
-                                 functionalCategory: .logisticsAndConsumption, zoneCategory: .outer, isEssential: true, isPacked: false),
-                    LogisticItem(name: "Snack Coklat / Energy Bar", quantity: 5, unit: .pcs, ownership: .pribadi,
-                                 functionalCategory: .logisticsAndConsumption, zoneCategory: .upperMiddle, isEssential: false, isPacked: true),
-                    LogisticItem(name: "Gula Aren / Madu", quantity: 1, unit: .pcs, ownership: .kelompok,
-                                 functionalCategory: .logisticsAndConsumption, zoneCategory: .upperMiddle, isEssential: false, isPacked: false),
+                    LogisticItem(name: "Gulungan Kasa Steril", quantity: 2, unit: .pcs, ownership: .kelompok, functionalCategory: .medicalKit, zoneCategory: .top, isEssential: true, isPacked: false),
+                    LogisticItem(name: "Pembersih Berbahan Dasar Alkohol", quantity: 1, unit: .pcs, ownership: .kelompok, functionalCategory: .medicalKit, zoneCategory: .top, isEssential: true, isPacked: false),
+                    LogisticItem(name: "Pinset", quantity: 1, unit: .pcs, ownership: .kelompok, functionalCategory: .medicalKit, zoneCategory: .top, isEssential: true, isPacked: false),
+                    LogisticItem(name: "Salep Antiseptik", quantity: 1, unit: .pcs, ownership: .kelompok, functionalCategory: .medicalKit, zoneCategory: .top, isEssential: true, isPacked: false),
+                    LogisticItem(name: "Perban Elastis", quantity: 2, unit: .pcs, ownership: .kelompok, functionalCategory: .medicalKit, zoneCategory: .top, isEssential: true, isPacked: false),
+                    LogisticItem(name: "Sarung Tangan Lateks", quantity: 2, unit: .pcs, ownership: .kelompok, functionalCategory: .medicalKit, zoneCategory: .top, isEssential: true, isPacked: false),
+                    LogisticItem(name: "Ibuprofen & Antihistamin", quantity: 10, unit: .pcs, ownership: .kelompok, functionalCategory: .medicalKit, zoneCategory: .top, isEssential: true, isPacked: false),
+                    LogisticItem(name: "Bubuk Elektrolit", quantity: 5, unit: .pcs, ownership: .kelompok, functionalCategory: .medicalKit, zoneCategory: .top, isEssential: true, isPacked: false),
+                    LogisticItem(name: "Minyak Kayu Putih", quantity: 1, unit: .pcs, ownership: .kelompok, functionalCategory: .medicalKit, zoneCategory: .top, isEssential: true, isPacked: false),
+                    LogisticItem(name: "Kapas", quantity: 1, unit: .pcs, ownership: .kelompok, functionalCategory: .medicalKit, zoneCategory: .top, isEssential: true, isPacked: false),
+                    LogisticItem(name: "Plester", quantity: 10, unit: .pcs, ownership: .kelompok, functionalCategory: .medicalKit, zoneCategory: .top, isEssential: true, isPacked: false),
+                    LogisticItem(name: "Obat-obatan Pribadi", quantity: 1, unit: .pcs, ownership: .pribadi, functionalCategory: .medicalKit, zoneCategory: .top, isEssential: true, isPacked: false),
                 ]
-            ),
-
-            // MARK: - Kesehatan dan Sanitasi
-            LogisticSectionModel(
-                categoryType: .functional(.healthAndSanitation),
-                items: [
-                    LogisticItem(name: "P3K Kit", quantity: 1, unit: .pcs, ownership: .kelompok,
-                                 functionalCategory: .healthAndSanitation, zoneCategory: .upperMiddle, isEssential: true, isPacked: false),
-                    LogisticItem(name: "Obat Anti Mabuk", quantity: 5, unit: .pcs, ownership: .pribadi,
-                                 functionalCategory: .healthAndSanitation, zoneCategory: .upperMiddle, isEssential: false, isPacked: false),
-                    LogisticItem(name: "Sunscreen SPF 50+", quantity: 1, unit: .pcs, ownership: .pribadi,
-                                 functionalCategory: .healthAndSanitation, zoneCategory: .upperMiddle, isEssential: true, isPacked: true),
-                    LogisticItem(name: "Hand Sanitizer 100ml", quantity: 1, unit: .ml, ownership: .pribadi,
-                                 functionalCategory: .healthAndSanitation, zoneCategory: .outer, isEssential: true, isPacked: false),
-                    LogisticItem(name: "Tisu Basah", quantity: 2, unit: .pcs, ownership: .pribadi,
-                                 functionalCategory: .healthAndSanitation, zoneCategory: .outer, isEssential: false, isPacked: true),
-                    LogisticItem(name: "Paracetamol 500mg", quantity: 6, unit: .pcs, ownership: .pribadi,
-                                 functionalCategory: .healthAndSanitation, zoneCategory: .upperMiddle, isEssential: true, isPacked: false),
-                    LogisticItem(name: "Plester / Kinesio Tape", quantity: 10, unit: .pcs, ownership: .pribadi,
-                                 functionalCategory: .healthAndSanitation, zoneCategory: .upperMiddle, isEssential: true, isPacked: false),
-                ]
-            ),
-
-            // MARK: - Perlengkapan Tambahan
-            LogisticSectionModel(
-                categoryType: .functional(.additionalEquipment),
-                items: [
-                    LogisticItem(name: "Headlamp + Baterai", quantity: 1, unit: .pcs, ownership: .pribadi,
-                                 functionalCategory: .additionalEquipment, zoneCategory: .outer, isEssential: true, isPacked: true),
-                    LogisticItem(name: "Trekking Pole", quantity: 2, unit: .pcs, ownership: .sewaan,
-                                 functionalCategory: .additionalEquipment, zoneCategory: .outer, isEssential: false, isPacked: false),
-                    LogisticItem(name: "Powerbank 20.000mAh", quantity: 1, unit: .pcs, ownership: .pribadi,
-                                 functionalCategory: .additionalEquipment, zoneCategory: .upperMiddle, isEssential: true, isPacked: false),
-                    LogisticItem(name: "Rain Cover Carrier", quantity: 1, unit: .pcs, ownership: .pribadi,
-                                 functionalCategory: .additionalEquipment, zoneCategory: .outer, isEssential: true, isPacked: false),
-                    LogisticItem(name: "Peluit Darurat", quantity: 1, unit: .pcs, ownership: .pribadi,
-                                 functionalCategory: .additionalEquipment, zoneCategory: .outer, isEssential: true, isPacked: true),
-                    LogisticItem(name: "Trash Bag 80L", quantity: 2, unit: .pcs, ownership: .kelompok,
-                                 functionalCategory: .additionalEquipment, zoneCategory: .outer, isEssential: false, isPacked: false),
-                    LogisticItem(name: "Carabiner Clip", quantity: 3, unit: .pcs, ownership: .pribadi,
-                                 functionalCategory: .additionalEquipment, zoneCategory: .outer, isEssential: false, isPacked: false),
-                ]
-            ),
+            )
         ]
     )
 }

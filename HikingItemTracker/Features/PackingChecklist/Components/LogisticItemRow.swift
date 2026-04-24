@@ -15,8 +15,8 @@ struct LogisticItemRow: View {
     var body: some View {
         HStack {
             Button(action: onTogglePacked) {
-                Image(systemName: item.isChecked ? "checkmark.square.fill" : "square")
-                    .foregroundStyle(item.isChecked ? .green : .gray)
+                Image(systemName: item.isPacked ? "checkmark.square.fill" : "square")
+                    .foregroundStyle(item.isPacked ? .green : .gray)
                     .font(.title3)
             }
             .buttonStyle(.plain)
@@ -35,8 +35,8 @@ struct LogisticItemRow: View {
                 HStack(spacing: 6) {
                     Text(item.name)
                         .font(.body)
-                        .strikethrough(item.isChecked)
-                        .foregroundStyle(item.isChecked ? .secondary : .primary)
+                        .strikethrough(item.isPacked)
+                        .foregroundStyle(item.isPacked ? .secondary : .primary)
 
                     if item.isEssential {
                         Image(systemName: "exclamationmark.triangle.fill")
@@ -48,8 +48,22 @@ struct LogisticItemRow: View {
                 HStack(spacing: 8) {
                     QuantityTag(text: "\(item.quantity) \(item.unit.rawValue)")
 
-                    if item.isRented {
-                        StatusTag(text: "Sewaan")
+                    switch item.ownership {
+                    case .pribadi:
+                        Text(item.ownership.rawValue)
+                            .font(.caption).fontWeight(.medium).foregroundStyle(.white)
+                            .padding(.horizontal, 8).padding(.vertical, 4)
+                            .background(.blue.opacity(0.7)).clipShape(RoundedRectangle(cornerRadius: 10))
+                    case .kelompok:
+                        Text(item.ownership.rawValue)
+                            .font(.caption).fontWeight(.medium).foregroundStyle(.white)
+                            .padding(.horizontal, 8).padding(.vertical, 4)
+                            .background(.mint).clipShape(RoundedRectangle(cornerRadius: 10))
+                    case .sewaan:
+                        Text(item.ownership.rawValue)
+                            .font(.caption).fontWeight(.medium).foregroundStyle(.white)
+                            .padding(.horizontal, 8).padding(.vertical, 4)
+                            .background(.orange.opacity(0.7)).clipShape(RoundedRectangle(cornerRadius: 10))
                     }
                 }
             }

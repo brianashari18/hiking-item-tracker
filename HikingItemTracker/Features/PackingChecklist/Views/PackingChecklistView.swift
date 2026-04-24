@@ -10,7 +10,7 @@ import SwiftUI
 struct PackingChecklistView: View {
     @Environment(AppRouter.self) private var router
     @State private var viewModel: PackingChecklistViewModel
-
+    
     init(mountainName: String? = nil, tripDate: String? = nil) {
         var trip = HikingTripModel.mock
         if let mountainName = mountainName {
@@ -18,24 +18,25 @@ struct PackingChecklistView: View {
         }
         _viewModel = State(initialValue: PackingChecklistViewModel(hikingTrip: trip))
     }
-
+    
     var body: some View {
         NavigationStack {
             ScrollView {
                 VStack(alignment: .leading, spacing: 20) {
                     PackingChecklistProgressCard(percentage: viewModel.progressPercentage)
-
+                    
                     VStack(alignment: .leading, spacing: 20) {
                         ForEach(viewModel.displayedSections) { section in
                             LogisticSectionView(
                                 sectionData: section,
                                 onTogglePacked: viewModel.togglePackedState,
+                                onToggleSectionPacked: { viewModel.toggleSectionPackedState(for: $0) },
                                 onTapItem: viewModel.selectItem,
                                 onDeleteItem: viewModel.deleteItem
                             )
                         }
                     }
-
+                    
                     Spacer()
                 }
                 .padding(20)
@@ -43,25 +44,59 @@ struct PackingChecklistView: View {
             .safeAreaInset(edge: .bottom) {
                 BottomActionButton(
                     title: viewModel.progressPercentage < 1.0
-                        ? "Lengkapi Barangmu Dulu"
-                        : "Mulai Pendakian",
+                    ? "Lengkapi Barangmu Dulu"
+                    : "Mulai Pendakian",
                     action: viewModel.progressPercentage >= 1.0
-                        ? { router.showOnHikeDashboard() }
-                        : nil
+                    ? { router.showOnHikeDashboard() }
+                    : nil
                 )
             }
             .navigationTitle(viewModel.mountainName)
             .navigationSubtitle(viewModel.tripDate)
-            .sheet(item: $viewModel.selectedItem) { item in
-                AddEditItemView(item: item, onSave: viewModel.updateItem)
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    Menu {
+                        Button(action: {}) {
+                            Label("Bag View", systemImage: "briefcase")
+                        }
+                        
+                        Button(action: {
+                            viewModel.checkAllItems()
+                        }) {
+                            Label("Checklist Semua", systemImage: "checkmark.circle")
+                        }
+                        
+                        Divider()
+                        
+                        Picker("Kategori Berdasarkan", selection: $viewModel.groupingMode) {
+                            ForEach(PackingChecklistGroupingMode.allCases) { mode in
+                                Text(mode.displayTitle).tag(mode)
+                            }
+                        }
+                    } label: {
+                        Image(systemName: "ellipsis")
+                    }
+                }
+                
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button {
+                        viewModel.isAddSheetPresented = true 
+                    } label: {
+                        Image(systemName: "plus")
+                    }
+                }
             }
-            .sheet(isPresented: $viewModel.isAddSheetPresented) {
-                AddEditItemView(onSave: viewModel.addItem)
-            }
+        }
+        .sheet(item: $viewModel.selectedItem) { item in
+            AddEditItemView(item: item, onSave: viewModel.updateItem)
+        }
+        .sheet(isPresented: $viewModel.isAddSheetPresented) {
+            AddEditItemView(onSave: viewModel.addItem)
         }
     }
 }
 
 #Preview {
     PackingChecklistView()
+        .environment(AppRouter())
 }

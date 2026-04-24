@@ -61,6 +61,27 @@ final class PackingChecklistViewModel {
         updateItem(updated)
     }
 
+    func toggleSectionPackedState(for section: LogisticSectionModel) {
+        let isAllPacked = section.itemCount == section.totalCount
+        let newPackedState = !isAllPacked
+
+        for item in section.items {
+            if item.isPacked != newPackedState {
+                var updatedItem = item
+                updatedItem.isPacked = newPackedState
+                updateItem(updatedItem)
+            }
+        }
+    }
+
+    func checkAllItems() {
+        for sectionIndex in hikingTrip.sections.indices {
+            for itemIndex in hikingTrip.sections[sectionIndex].items.indices {
+                hikingTrip.sections[sectionIndex].items[itemIndex].isPacked = true
+            }
+        }
+    }
+
     func updateItem(_ updatedItem: LogisticItem) {
         for sectionIndex in hikingTrip.sections.indices {
             if let itemIndex = hikingTrip.sections[sectionIndex].items.firstIndex(where: { $0.id == updatedItem.id }) {

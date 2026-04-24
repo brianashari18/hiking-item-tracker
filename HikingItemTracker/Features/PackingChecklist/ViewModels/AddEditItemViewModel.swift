@@ -14,7 +14,7 @@ final class AddEditItemViewModel {
     var quantity: String = ""
     var selectedUnit: ItemUnit = .pcs
     var selectedOwnership: ItemOwnership = .pribadi
-    var selectedFunctionalCategory: ItemFunctionalCategory = .additionalEquipment
+    var selectedFunctionalCategory: ItemFunctionalCategory = .personalItem
     var isEssential: Bool = false
     var isPacked: Bool = false
 

@@ -25,7 +25,7 @@ struct PackingChecklistProgressCard: View {
 
                     RoundedRectangle(cornerRadius: 10)
                         .frame(width: geometry.size.width * percentage, height: 10)
-                        .foregroundStyle(.green)
+                        .foregroundStyle(Color(red: 77/255, green: 143/255, blue: 145/255))
                 }
             }
             .frame(height: 10)

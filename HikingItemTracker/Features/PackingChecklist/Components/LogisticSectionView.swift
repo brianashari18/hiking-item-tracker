@@ -10,17 +10,20 @@ import SwiftUI
 struct LogisticSectionView: View {
     let sectionData: LogisticSectionModel
     let onTogglePacked: (LogisticItem) -> Void
+    let onToggleSectionPacked: (LogisticSectionModel) -> Void
     let onTapItem: (LogisticItem) -> Void
     let onDeleteItem: (LogisticItem) -> Void
 
     init(
         sectionData: LogisticSectionModel,
         onTogglePacked: @escaping (LogisticItem) -> Void,
+        onToggleSectionPacked: @escaping (LogisticSectionModel) -> Void,
         onTapItem: @escaping (LogisticItem) -> Void,
         onDeleteItem: @escaping (LogisticItem) -> Void
     ) {
         self.sectionData = sectionData
         self.onTogglePacked = onTogglePacked
+        self.onToggleSectionPacked = onToggleSectionPacked
         self.onTapItem = onTapItem
         self.onDeleteItem = onDeleteItem
     }
@@ -43,9 +46,18 @@ struct LogisticSectionView: View {
 
             Spacer()
 
-            Text("\(sectionData.itemCount)/\(sectionData.totalCount)")
-                .font(.subheadline)
-                .foregroundStyle(.secondary)
+            HStack {
+                Button {
+                    onToggleSectionPacked(sectionData)
+                } label: {
+                    Image(systemName: sectionData.itemCount == sectionData.totalCount ? "checkmark.circle.fill" : "circle")
+                        .foregroundStyle(sectionData.itemCount == sectionData.totalCount ? .green : .secondary)
+                }
+                
+                Text("\(sectionData.itemCount)/\(sectionData.totalCount)")
+                    .font(.subheadline)
+                    .foregroundStyle(.secondary)
+            }
         }
         .padding(.horizontal, 4)
     }

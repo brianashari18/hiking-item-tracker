@@ -18,16 +18,13 @@ struct LogisticItem: Identifiable {
     var isEssential: Bool
     var isPacked: Bool
 
-    var isRented: Bool { ownership == .sewaan }
-    var isChecked: Bool { isPacked }
-
     init(
         id: UUID = UUID(),
         name: String,
         quantity: Int,
         unit: ItemUnit = .pcs,
         ownership: ItemOwnership = .pribadi,
-        functionalCategory: ItemFunctionalCategory = .additionalEquipment,
+        functionalCategory: ItemFunctionalCategory = .personalItem,
         zoneCategory: ItemZoneCategory = .bottom,
         isEssential: Bool = false,
         isPacked: Bool = false
