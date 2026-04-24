@@ -59,6 +59,21 @@ struct TripSetupView: View {
             .padding(.horizontal, 30)
         }
         .ignoresSafeArea(edges: .top)
+        .overlay(alignment: .topLeading) {
+            Button {
+                router.showMountainLibrary()
+            } label: {
+                Image(systemName: "chevron.left")
+                    .font(.headline)
+                    .foregroundStyle(.black)
+                    .frame(width: 40, height: 40)
+                    .background(Color.white)
+                    .clipShape(Circle())
+                    .shadow(radius: 2)
+            }
+            .padding(.top, 60) // Adjust for status bar
+            .padding(.leading, 20)
+        }
         .safeAreaInset(edge: .bottom) {
             VStack {
                 Button {
@@ -75,7 +90,7 @@ struct TripSetupView: View {
                         tripDateStr = "\(startDateStr) - \(endDateStr)"
                     }
 
-                    router.showPackingChecklist(mountainName: viewModel.selectedMountain.name, tripDate: tripDateStr)
+                    router.showPackingChecklist(mountain: viewModel.selectedMountain, tripDate: tripDateStr)
                 } label: {
                     Text("Mulai Perjalanan")
                 }

@@ -30,7 +30,7 @@ final class OnHikeDashboardViewModel {
     }
 
     var altitudeText: String {
-        "3.726 mdpl"
+        "\(mountain.height) mdpl"
     }
 
     var filteredItems: [LogisticItem] {

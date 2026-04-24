@@ -24,16 +24,16 @@ final class AppRouter {
             currentRoute = .tripSetup(mountain)
     }
 
-    func showPackingChecklist(mountainName: String? = nil, tripDate: String? = nil) {
-        currentRoute = .packingChecklist(mountainName, tripDate)
+    func showPackingChecklist(mountain: Mountain? = nil, tripDate: String? = nil) {
+        currentRoute = .packingChecklist(mountain: mountain, tripDate: tripDate)
     }
 
-    func showOnHikeDashboard() {
-        currentRoute = .onHikeDashboard
+    func showOnHikeDashboard(mountain: Mountain, hikingTrip: HikingTripModel) {
+        currentRoute = .onHikeDashboard(mountain: mountain, hikingTrip: hikingTrip)
     }
 
     func showTripSetupFromFinish() {
-        currentRoute = .tripSetup()
+        currentRoute = .mountainLibrary
     }
     
     func showMountainLibrary() {

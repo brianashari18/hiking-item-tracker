@@ -34,10 +34,10 @@ private struct AppRootView: View {
             TripIntroView()
         case .tripSetup(let selectedMountain):
             TripSetupView(mountain: selectedMountain)
-        case .packingChecklist(let mountainName, let tripDate):
-            PackingChecklistView(mountainName: mountainName, tripDate: tripDate)
-        case .onHikeDashboard:
-            OnHikeDashboardView()
+        case .packingChecklist(let mountain, let tripDate):
+            PackingChecklistView(mountain: mountain, tripDate: tripDate)
+        case .onHikeDashboard(let mountain, let hikingTrip):
+            OnHikeDashboardView(mountain: mountain, hikingTrip: hikingTrip)
         case .mountainLibrary:
             MountainLibraryView()
         }

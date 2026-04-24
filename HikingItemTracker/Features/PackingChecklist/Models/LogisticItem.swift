@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct LogisticItem: Identifiable {
+struct LogisticItem: Identifiable, Equatable {
     let id: UUID
     var name: String
     var quantity: Int

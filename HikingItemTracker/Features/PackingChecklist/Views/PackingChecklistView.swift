@@ -9,12 +9,14 @@ import SwiftUI
 
 struct PackingChecklistView: View {
     @Environment(AppRouter.self) private var router
+    private let mountain: Mountain?
     @State private var viewModel: PackingChecklistViewModel
     
-    init(mountainName: String? = nil, tripDate: String? = nil) {
+    init(mountain: Mountain? = nil, tripDate: String? = nil) {
+        self.mountain = mountain
         var trip = HikingTripModel.mock
-        if let mountainName = mountainName {
-            trip = HikingTripModel(mountainName: mountainName, tripDate: tripDate ?? "", sections: trip.sections)
+        if let mountain = mountain {
+            trip = HikingTripModel(mountainName: mountain.name, tripDate: tripDate ?? "", sections: trip.sections)
         }
         _viewModel = State(initialValue: PackingChecklistViewModel(hikingTrip: trip))
     }
@@ -47,7 +49,11 @@ struct PackingChecklistView: View {
                     ? "Lengkapi Barangmu Dulu"
                     : "Mulai Pendakian",
                     action: viewModel.progressPercentage >= 1.0
-                    ? { router.showOnHikeDashboard() }
+                    ? { 
+                        if let mountain = mountain {
+                            router.showOnHikeDashboard(mountain: mountain, hikingTrip: viewModel.hikingTrip)
+                        }
+                    }
                     : nil
                 )
             }

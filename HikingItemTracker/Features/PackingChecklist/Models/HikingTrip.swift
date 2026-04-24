@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct HikingTripModel {
+struct HikingTripModel: Equatable {
     let mountainName: String
     let tripDate: String
     var sections: [LogisticSectionModel]

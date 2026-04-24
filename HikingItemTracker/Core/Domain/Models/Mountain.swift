@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Mountain: Identifiable, Hashable {
+struct Mountain: Identifiable, Hashable, Equatable {
     let id: UUID = UUID()
     let name: String
     let grade: String

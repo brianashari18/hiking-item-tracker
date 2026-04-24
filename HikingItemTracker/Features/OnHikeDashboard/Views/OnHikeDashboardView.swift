@@ -9,7 +9,11 @@ import SwiftUI
 
 struct OnHikeDashboardView: View {
     @Environment(AppRouter.self) private var router
-    @State private var viewModel = OnHikeDashboardViewModel()
+    @State private var viewModel: OnHikeDashboardViewModel
+    
+    init(mountain: Mountain, hikingTrip: HikingTripModel) {
+        _viewModel = State(initialValue: OnHikeDashboardViewModel(mountain: mountain, hikingTrip: hikingTrip))
+    }
 
     var body: some View {
         VStack(spacing: 0) {
@@ -83,6 +87,6 @@ struct OnHikeDashboardView: View {
 }
 
 #Preview {
-    OnHikeDashboardView()
+    OnHikeDashboardView(mountain: Mountain.mocks.first!, hikingTrip: .mock)
         .environment(AppRouter())
 }

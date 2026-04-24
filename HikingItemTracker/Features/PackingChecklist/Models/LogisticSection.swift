@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum SectionCategoryType {
+enum SectionCategoryType: Equatable {
     case functional(ItemFunctionalCategory)
     case zone(ItemZoneCategory)
 
@@ -19,7 +19,7 @@ enum SectionCategoryType {
     }
 }
 
-struct LogisticSectionModel: Identifiable {
+struct LogisticSectionModel: Identifiable, Equatable {
     let id = UUID()
     let categoryType: SectionCategoryType
     var items: [LogisticItem]
