@@ -71,8 +71,8 @@ struct TripSetupView: View {
                     .clipShape(Circle())
                     .shadow(radius: 2)
             }
-            .padding(.top, 60) // Adjust for status bar
-            .padding(.leading, 20)
+            .padding(.top, 60)
+            .padding(.leading, 55)
         }
         .safeAreaInset(edge: .bottom) {
             VStack {

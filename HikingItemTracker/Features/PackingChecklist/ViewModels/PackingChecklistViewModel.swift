@@ -28,9 +28,6 @@ final class PackingChecklistViewModel {
     var isAddSheetPresented: Bool = false
     var groupingMode: PackingChecklistGroupingMode = .functional
 
-    // MARK: - Computed Sections
-
-    /// Returns sections regrouped based on current grouping mode
     var displayedSections: [LogisticSectionModel] {
         switch groupingMode {
         case .functional:
@@ -47,13 +44,10 @@ final class PackingChecklistViewModel {
     var mountainName: String { hikingTrip.mountainName }
     var tripDate: String { hikingTrip.tripDate }
 
-    // MARK: - Init
-
     init(hikingTrip: HikingTripModel = .mock) {
         self.hikingTrip = hikingTrip
     }
 
-    // MARK: - Actions
 
     func togglePackedState(for item: LogisticItem) {
         var updated = item

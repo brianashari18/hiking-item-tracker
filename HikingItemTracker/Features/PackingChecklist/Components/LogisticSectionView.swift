@@ -35,8 +35,6 @@ struct LogisticSectionView: View {
         }
     }
 
-    // MARK: - Subviews
-
     private var sectionHeader: some View {
         HStack(alignment: .bottom) {
             Text(sectionData.title)

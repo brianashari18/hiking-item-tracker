@@ -17,7 +17,7 @@ struct SplashView: View {
                 .resizable()
                 .scaledToFit()
             
-            Text("Mountrack")
+            Text("Muncakin")
                 .font(.title)
                 .fontWeight(.bold)
         }

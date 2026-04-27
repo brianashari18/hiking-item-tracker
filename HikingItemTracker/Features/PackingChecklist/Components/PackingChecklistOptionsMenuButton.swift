@@ -31,6 +31,12 @@ struct PackingChecklistOptionsMenuButton: View {
                         Text(mode.displayTitle).tag(mode)
                     }
                 }
+                
+                Button {
+                    
+                } label: {
+                    Text("Cancel")
+                }
             } label: {
                 Image(systemName: "ellipsis")
                     .font(.headline)

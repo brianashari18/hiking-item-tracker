@@ -25,6 +25,8 @@ struct PackingChecklistView: View {
         NavigationStack {
             ScrollView {
                 VStack(alignment: .leading, spacing: 20) {
+
+                    
                     PackingChecklistProgressCard(percentage: viewModel.progressPercentage)
                     
                     VStack(alignment: .leading, spacing: 20) {
@@ -43,10 +45,11 @@ struct PackingChecklistView: View {
                 }
                 .padding(20)
             }
+            .coordinateSpace(name: "scroll")
             .safeAreaInset(edge: .bottom) {
                 BottomActionButton(
                     title: viewModel.progressPercentage < 1.0
-                    ? "Lengkapi Barangmu Dulu"
+                    ? "Lengkapi Barangmu (\(Int(viewModel.progressPercentage * 100))%)"
                     : "Mulai Pendakian",
                     action: viewModel.progressPercentage >= 1.0
                     ? { 
@@ -60,6 +63,15 @@ struct PackingChecklistView: View {
             .navigationTitle(viewModel.mountainName)
             .navigationSubtitle(viewModel.tripDate)
             .toolbar {
+                ToolbarItem(placement: .topBarLeading) {
+                    Button {
+                        router.showTripSetup(mountain: mountain)
+                    } label: {
+                        Image(systemName: "chevron.left")
+                            .fontWeight(.semibold)
+                    }
+                }
+                
                 ToolbarItem(placement: .topBarTrailing) {
                     Menu {
                         Button(action: {}) {
@@ -92,6 +104,9 @@ struct PackingChecklistView: View {
                     }
                 }
             }
+            
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .background(.black.opacity(0.05))
         }
         .sheet(item: $viewModel.selectedItem) { item in
             AddEditItemView(item: item, onSave: viewModel.updateItem)

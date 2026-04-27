@@ -21,11 +21,11 @@ struct PackingChecklistProgressCard: View {
                 ZStack(alignment: .leading) {
                     RoundedRectangle(cornerRadius: 10)
                         .frame(height: 10)
-                        .foregroundStyle(.white)
+                        .foregroundStyle(.white.opacity(0.5))
 
                     RoundedRectangle(cornerRadius: 10)
                         .frame(width: geometry.size.width * percentage, height: 10)
-                        .foregroundStyle(Color(red: 77/255, green: 143/255, blue: 145/255))
+                        .foregroundStyle(.white)
                 }
             }
             .frame(height: 10)
@@ -35,7 +35,12 @@ struct PackingChecklistProgressCard: View {
                 .foregroundStyle(.white)
         }
         .padding()
-        .background(Color.green.opacity(0.8))
+        .background(Color(red: 77/255, green: 143/255, blue: 145/255))
         .clipShape(RoundedRectangle(cornerRadius: 15))
     }
+}
+
+
+#Preview {
+    PackingChecklistProgressCard(percentage: 0.75)
 }

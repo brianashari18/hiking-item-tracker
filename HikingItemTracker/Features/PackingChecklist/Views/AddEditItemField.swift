@@ -15,21 +15,17 @@ struct AddEditItemView: View {
     var onSave: ((LogisticItem) -> Void)?
 
     // MARK: - Init
-
-    /// Add mode
     init(onSave: ((LogisticItem) -> Void)? = nil) {
         _viewModel = State(initialValue: AddEditItemViewModel())
         self.onSave = onSave
     }
 
-    /// Edit mode
     init(item: LogisticItem, onSave: ((LogisticItem) -> Void)? = nil) {
         _viewModel = State(initialValue: AddEditItemViewModel(item: item))
         self.onSave = onSave
     }
 
     // MARK: - Body
-
     var body: some View {
         NavigationStack {
             ScrollView {
@@ -68,7 +64,6 @@ struct AddEditItemView: View {
     }
 
     // MARK: - Sections
-
     private var mainInfoSection: some View {
         VStack(alignment: .leading, spacing: 0) {
             FormSectionLabel(title: "Informasi Utama")
@@ -104,7 +99,6 @@ struct AddEditItemView: View {
             FormSectionLabel(title: "Kategori")
 
             VStack(spacing: 14) {
-                // Functional Category picker
                 HStack {
                     Text("Kategori Fungsional")
                         .font(.body)
@@ -133,7 +127,6 @@ struct AddEditItemView: View {
 
                 Divider()
 
-                // Auto-assigned zone — read-only info badge
                 HStack {
                     Text("Zona Penempatan")
                         .font(.body)
@@ -195,8 +188,6 @@ struct AddEditItemView: View {
         }
     }
 }
-
-// MARK: - Previews
 
 #Preview("Add Mode") {
     AddEditItemView()

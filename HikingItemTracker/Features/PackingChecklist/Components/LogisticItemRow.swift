@@ -39,7 +39,7 @@ struct LogisticItemRow: View {
                         .foregroundStyle(item.isPacked ? .secondary : .primary)
 
                     if item.isEssential {
-                        Image(systemName: "exclamationmark.triangle.fill")
+                        Image(systemName: "exclamationmark.3")
                             .foregroundStyle(.orange)
                             .font(.footnote)
                     }
