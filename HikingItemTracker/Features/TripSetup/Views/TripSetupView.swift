@@ -12,54 +12,57 @@ struct TripSetupView: View {
     var body: some View {
         @Bindable var viewModel = viewModel
 
-        ScrollView {
-            VStack(spacing: 28) {
-                
-                VStack(alignment: .leading, spacing: 16) {
-                    Image(viewModel.selectedMountain.imageUrl)
-                        .resizable()
-                        .scaledToFill()
-                        .frame(maxWidth: .infinity)
-                        .frame(height: 280)
-                        .clipped()
-                    
-                    VStack(alignment: .leading, spacing: 6) {
-                        Text(viewModel.selectedMountain.name)
-                            .font(.largeTitle)
-                            .fontWeight(.heavy)
+        ZStack(alignment: .topLeading) {
+            ScrollView {
+                VStack(spacing: 28) {
+                    VStack(alignment: .leading, spacing: 0) {
+                        Image(viewModel.selectedMountain.imageUrl)
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                            .frame(width: UIScreen.main.bounds.width, height: 280)
+                            .clipped()
                         
-                        HStack {
-                            Image(systemName: "mappin.and.ellipse")
-                            Text("\(viewModel.selectedMountain.location) • \(viewModel.selectedMountain.grade.difficulty)")
+                        VStack(alignment: .leading, spacing: 4) {
+                            Text(viewModel.selectedMountain.name)
+                                .font(.title2)
+                                .fontWeight(.bold)
+                                .foregroundStyle(.primary)
+                                .lineLimit(1)
+                                .minimumScaleFactor(0.5)
+                            
+                            HStack(spacing: 4) {
+                                Image(systemName: "mappin.and.ellipse")
+                                    .font(.caption)
+                                Text("\(viewModel.selectedMountain.location) • Grade \(viewModel.selectedMountain.grade.rawValue)")
+                                    .font(.subheadline)
+                            }
+                            .foregroundStyle(.secondary)
                         }
-                        .font(.headline)
-                        .foregroundStyle(.secondary)
+                        .padding(20)
                     }
-                    .padding(.horizontal, 30)
-                }
-                
-                VStack(spacing: 24) {
-                    TripFormSection(title: "Kapan Jadwal Pendakiannya?") {
-                        TripDateRangeField(
-                            startDate: $viewModel.selectedStartDate,
-                            endDate: $viewModel.selectedEndDate,
-                            minimumStartDate: viewModel.minimumStartDate,
-                            minimumEndDate: viewModel.minimumEndDate,
-                            onStartDateChange: viewModel.updateStartDate
-                        )
-                    }
+                    
+                    VStack(spacing: 24) {
+                        TripFormSection(title: "Kapan Jadwal Pendakiannya?") {
+                            TripDateRangeField(
+                                startDate: $viewModel.selectedStartDate,
+                                endDate: $viewModel.selectedEndDate,
+                                minimumStartDate: viewModel.minimumStartDate,
+                                minimumEndDate: viewModel.minimumEndDate,
+                                onStartDateChange: viewModel.updateStartDate
+                            )
+                        }
 
-                    TripFormSection(title: "Berapa Orang yang akan Ikut Mendaki?") {
-                        PeopleCounterField(numberOfPeople: $viewModel.numberOfPeople)
+                        TripFormSection(title: "Berapa Orang yang akan Ikut Mendaki?") {
+                            PeopleCounterField(numberOfPeople: $viewModel.numberOfPeople)
+                        }
                     }
+                    .padding(.horizontal, 20)
+                    
                 }
-                .padding(.horizontal, 30)
-                
             }
-            .padding(.horizontal, 30)
-        }
-        .ignoresSafeArea(edges: .top)
-        .overlay(alignment: .topLeading) {
+            .ignoresSafeArea(edges: .top)
+            
+            // Back Button
             Button {
                 router.showMountainLibrary()
             } label: {
@@ -72,7 +75,7 @@ struct TripSetupView: View {
                     .shadow(radius: 2)
             }
             .padding(.top, 60)
-            .padding(.leading, 55)
+            .padding(.leading, 20)
         }
         .safeAreaInset(edge: .bottom) {
             VStack {

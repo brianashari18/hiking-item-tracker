@@ -79,14 +79,14 @@
     ]
   },
   {
-    "name" : "Gunung Mambulilling",
+    "name" : "Gunung Mambuliling",
     "fauna" : "Aman",
     "location" : "Sulawesi Barat",
     "terrain" : "berlumut tebal, berkabut, licin",
     "duration" : 2,
     "id" : "DF3D6E20-10F6-40CC-8DF4-4FC223144B49",
     "isActive" : false,
-    "imageUrl" : "gunung_mambulilling",
+    "imageUrl" : "gunung_mambuliling",
     "grade" : "II",
     "height" : 2873,
     "type" : [
