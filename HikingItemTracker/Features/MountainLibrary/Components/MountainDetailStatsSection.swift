@@ -32,13 +32,13 @@ struct MountainDetailStatsSection: View {
             StatCell(
                 icon: "chart.bar.fill",
                 label: "Tingkat Kesulitan",
-                value: mountain.difficulty,
+                value: mountain.grade.difficulty,
                 tintColor: gradeAccentColor
             )
             StatCell(
                 icon: "exclamationmark.triangle.fill",
                 label: "Status Gunung",
-                value: mountain.status,
+                value: mountain.isActive ? "Aktif" : "Ditutup",
                 tintColor: gradeAccentColor
             )
         }

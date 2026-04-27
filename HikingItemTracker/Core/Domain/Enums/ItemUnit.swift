@@ -14,6 +14,7 @@ enum ItemUnit: String, CaseIterable, Identifiable {
     case l = "L"
     case pcs = "pcs"
     case set = "set"
+    case pair = "pasang"
 
     var id: String { rawValue }
 }

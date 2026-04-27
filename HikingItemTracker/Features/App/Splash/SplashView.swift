@@ -16,10 +16,6 @@ struct SplashView: View {
             Image("img_splash")
                 .resizable()
                 .scaledToFit()
-            
-            Text("Muncakin")
-                .font(.title)
-                .fontWeight(.bold)
         }
         .task {
             try? await Task.sleep(for: .seconds(2))

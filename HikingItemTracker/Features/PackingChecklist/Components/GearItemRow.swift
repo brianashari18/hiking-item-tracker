@@ -1,5 +1,5 @@
 //
-//  LogisticItemRow.swift
+//  GearItemRow.swift
 //  HikingItemTracker
 //
 //  Created by Brian Anashari on 19/04/26.
@@ -7,8 +7,8 @@
 
 import SwiftUI
 
-struct LogisticItemRow: View {
-    let item: LogisticItem
+struct GearItemRow: View {
+    let item: GearItem
     let onTogglePacked: () -> Void
     let onTapDetails: () -> Void
 
@@ -38,7 +38,7 @@ struct LogisticItemRow: View {
                         .strikethrough(item.isPacked)
                         .foregroundStyle(item.isPacked ? .secondary : .primary)
 
-                    if item.isEssential {
+                    if item.necessity == .universalEssential {
                         Image(systemName: "exclamationmark.3")
                             .foregroundStyle(.orange)
                             .font(.footnote)

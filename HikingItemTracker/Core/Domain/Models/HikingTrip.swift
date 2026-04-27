@@ -10,6 +10,8 @@ import Foundation
 struct HikingTripModel: Equatable {
     let mountainName: String
     let tripDate: String
+    let duration: Int
+    let numberOfPeople: Int
     var sections: [LogisticSectionModel]
 
     var progressPercentage: CGFloat {

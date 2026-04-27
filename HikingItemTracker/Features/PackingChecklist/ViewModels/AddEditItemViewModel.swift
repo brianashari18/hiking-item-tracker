@@ -38,7 +38,7 @@ final class AddEditItemViewModel {
         self.isEditMode = false
     }
 
-    init(item: LogisticItem) {
+    init(item: GearItem) {
         self.itemID = item.id
         self.isEditMode = true
         self.name = item.name
@@ -46,15 +46,15 @@ final class AddEditItemViewModel {
         self.selectedUnit = item.unit
         self.selectedOwnership = item.ownership
         self.selectedFunctionalCategory = item.functionalCategory
-        self.isEssential = item.isEssential
+        self.isEssential = item.necessity == .universalEssential
         self.isPacked = item.isPacked
     }
 
     // MARK: - Actions
 
-    func buildItem() -> LogisticItem? {
+    func buildItem() -> GearItem? {
         guard let qty = Int(quantity), isSaveEnabled else { return nil }
-        return LogisticItem(
+        return GearItem(
             id: itemID ?? UUID(),
             name: name.trimmingCharacters(in: .whitespaces),
             quantity: qty,
@@ -62,7 +62,7 @@ final class AddEditItemViewModel {
             ownership: selectedOwnership,
             functionalCategory: selectedFunctionalCategory,
             zoneCategory: selectedFunctionalCategory.defaultZone, // auto-assigned
-            isEssential: isEssential,
+            necessity: isEssential ? .universalEssential : .optional,
             isPacked: isPacked
         )
     }

@@ -26,14 +26,14 @@ final class OnHikeDashboardViewModel {
     }
 
     var durationText: String {
-        "\(mountain.duration) Hari Perjalanan"
+        "\(hikingTrip.duration) Hari Perjalanan"
     }
 
     var altitudeText: String {
         "\(mountain.height) mdpl"
     }
 
-    var filteredItems: [LogisticItem] {
+    var filteredItems: [GearItem] {
         hikingTrip.sections.flatMap(\.items)
     }
 
@@ -45,7 +45,7 @@ final class OnHikeDashboardViewModel {
         self.hikingTrip = hikingTrip
     }
 
-    func toggleItemPacked(_ item: LogisticItem) {
+    func toggleItemPacked(_ item: GearItem) {
         for sectionIndex in hikingTrip.sections.indices {
             if let itemIndex = hikingTrip.sections[sectionIndex].items.firstIndex(where: { $0.id == item.id }) {
                 hikingTrip.sections[sectionIndex].items[itemIndex].isPacked.toggle()

@@ -28,7 +28,7 @@
             
             
             if selectedGrade != "Semua" {
-                        result = result.filter { $0.grade == selectedGrade }
+                        result = result.filter { $0.grade.rawValue == selectedGrade }
                     }
             
             return result

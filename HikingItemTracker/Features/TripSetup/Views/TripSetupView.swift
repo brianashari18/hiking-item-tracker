@@ -30,7 +30,7 @@ struct TripSetupView: View {
                         
                         HStack {
                             Image(systemName: "mappin.and.ellipse")
-                            Text("\(viewModel.selectedMountain.location) • \(viewModel.selectedMountain.difficulty)")
+                            Text("\(viewModel.selectedMountain.location) • \(viewModel.selectedMountain.grade.difficulty)")
                         }
                         .font(.headline)
                         .foregroundStyle(.secondary)
@@ -90,7 +90,12 @@ struct TripSetupView: View {
                         tripDateStr = "\(startDateStr) - \(endDateStr)"
                     }
 
-                    router.showPackingChecklist(mountain: viewModel.selectedMountain, tripDate: tripDateStr)
+                    router.showPackingChecklist(
+                        mountain: viewModel.selectedMountain,
+                        tripDate: tripDateStr,
+                        duration: viewModel.selectedDuration,
+                        numberOfPeople: viewModel.numberOfPeople
+                    )
                 } label: {
                     Text("Mulai Perjalanan")
                 }

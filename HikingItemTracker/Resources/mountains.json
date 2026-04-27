@@ -1,0 +1,491 @@
+[
+  {
+    "name" : "Gunung Bromo",
+    "fauna" : "Ada tapi tidak berbahaya, jauh dari keramaian",
+    "location" : "Jawa Timur",
+    "terrain" : "Sangat mudah diakses",
+    "duration" : 1,
+    "id" : "3AE24558-20CF-4BB5-BDB6-5A9BBA86C690",
+    "isActive" : true,
+    "imageUrl" : "gunung_bromo",
+    "grade" : "I",
+    "height" : 2329,
+    "type" : [
+      "volcanic",
+      "sandy"
+    ]
+  },
+  {
+    "name" : "Gunung Ambang",
+    "fauna" : "Macaca Nigra (Yaki)",
+    "location" : "Sulawesi Utara",
+    "terrain" : "warning gas beracunnnn",
+    "duration" : 2,
+    "id" : "2E182D3A-70D7-4DC1-AFCC-8B4E4AE759F3",
+    "isActive" : true,
+    "imageUrl" : "gunung_ambang",
+    "grade" : "II",
+    "height" : 1795,
+    "type" : [
+      "poisonous",
+      "volcanic"
+    ]
+  },
+  {
+    "name" : "Gunung Ijen",
+    "fauna" : "Ada macan, tapi jauh dari jalur pendakian",
+    "location" : "Jawa Timur",
+    "terrain" : "tanah merah, berpasir, dan berbatu. Beberapa bagian cukup licin. Hati\" jurang di kanan dan kiri",
+    "duration" : 1,
+    "id" : "D499680E-7AA6-42E9-B376-2F6AE9D5E49F",
+    "isActive" : true,
+    "imageUrl" : "gunung_ijen",
+    "grade" : "II",
+    "height" : 2769,
+    "type" : [
+      "sandy",
+      "rocky",
+      "slippery"
+    ]
+  },
+  {
+    "name" : "Gunung Kaba",
+    "fauna" : "Owa siamang",
+    "location" : "Bengkulu",
+    "terrain" : "track mudah dan jarak tempuh singkat",
+    "duration" : 2,
+    "id" : "26425B3D-1D3B-4B3D-B777-E47E434F2A9E",
+    "isActive" : true,
+    "imageUrl" : "gunung_kaba",
+    "grade" : "II",
+    "height" : 1952,
+    "type" : [
+      "volcanic"
+    ]
+  },
+  {
+    "name" : "Gunung Bulubaria",
+    "fauna" : "Aman",
+    "location" : "Sulawesi Selatan",
+    "terrain" : "cukup sulit",
+    "duration" : 2,
+    "id" : "916EA959-A4A6-45E7-BF79-68C839574F9D",
+    "isActive" : false,
+    "imageUrl" : "gunung_bulubaria",
+    "grade" : "II",
+    "height" : 2730,
+    "type" : [
+      "steep"
+    ]
+  },
+  {
+    "name" : "Gunung Mambulilling",
+    "fauna" : "Aman",
+    "location" : "Sulawesi Barat",
+    "terrain" : "berlumut tebal, berkabut, licin",
+    "duration" : 2,
+    "id" : "DF3D6E20-10F6-40CC-8DF4-4FC223144B49",
+    "isActive" : false,
+    "imageUrl" : "gunung_mambulilling",
+    "grade" : "II",
+    "height" : 2873,
+    "type" : [
+      "mossy",
+      "foggy",
+      "slippery"
+    ]
+  },
+  {
+    "name" : "Gunung Papandayan",
+    "fauna" : "Aman",
+    "location" : "Jawa Barat",
+    "terrain" : "jalur yang landai, tertata, dan tidak terlalu curam",
+    "duration" : 2,
+    "id" : "BDA70D65-F560-45F7-BD7F-B4CDC54062D1",
+    "isActive" : true,
+    "imageUrl" : "gunung_papandayan",
+    "grade" : "II",
+    "height" : 2665,
+    "type" : [
+      "volcanic"
+    ]
+  },
+  {
+    "name" : "Gunung Bulusaraung",
+    "fauna" : "Banyak kupu-kupu",
+    "location" : "Sulawesi Selatan",
+    "terrain" : "Bebatuan dengan medan cukup terjal",
+    "duration" : 2,
+    "id" : "AD5A2107-B905-4F45-B479-67DABA914827",
+    "isActive" : false,
+    "imageUrl" : "gunung_bulusaraung",
+    "grade" : "II",
+    "height" : 1353,
+    "type" : [
+      "rocky",
+      "steep"
+    ]
+  },
+  {
+    "name" : "Gunung Batur",
+    "fauna" : "Monyet ekor panjang",
+    "location" : "Bali",
+    "terrain" : "tanah berpasir dan batuan vulkanik",
+    "duration" : 1,
+    "id" : "2858B0B1-E397-4DCC-8898-F65D7AD3D292",
+    "isActive" : true,
+    "imageUrl" : "gunung_batur",
+    "grade" : "II",
+    "height" : 1717,
+    "type" : [
+      "sandy",
+      "volcanic"
+    ]
+  },
+  {
+    "name" : "Gunung Maras",
+    "fauna" : "Aman, jauh dari keramaian",
+    "location" : "Bangka Belitung",
+    "terrain" : "tanah dengan medan cukup terjal",
+    "duration" : 2,
+    "id" : "94EE32EE-6025-4143-9059-376CB3CFAE3F",
+    "isActive" : false,
+    "imageUrl" : "gunung_maras",
+    "grade" : "II",
+    "height" : 669,
+    "type" : [
+      "steep"
+    ]
+  },
+  {
+    "name" : "Gunung Kelimutu",
+    "fauna" : "Aman",
+    "location" : "Nusa Tenggara Timur",
+    "terrain" : "jalan setapak rapi, tangga semen, dan pagar pembatas yang aman di bawah pepohonan pinus",
+    "duration" : 1,
+    "id" : "68608ADB-928E-4E21-ACC6-E7F19DAF73DC",
+    "isActive" : true,
+    "imageUrl" : "gunung_kelimutu",
+    "grade" : "III",
+    "height" : 1639,
+    "type" : [
+      "volcanic"
+    ]
+  },
+  {
+    "name" : "Gunung Ciremai",
+    "fauna" : "Babi hutan di pos 6",
+    "location" : "Jawa Barat",
+    "terrain" : "terjal, minim air",
+    "duration" : 3,
+    "id" : "06250918-8CDB-4863-BAAE-2EC2C04F38F6",
+    "isActive" : true,
+    "imageUrl" : "gunung_ciremai",
+    "grade" : "III",
+    "height" : 3078,
+    "type" : [
+      "steep",
+      "rocky"
+    ]
+  },
+  {
+    "name" : "Gunung Bawakaraeng",
+    "fauna" : "Babi hutan",
+    "location" : "Sulawesi Selatan",
+    "terrain" : "Terjal, ada hutan lumut sehingga licin, suhu rendah 7-8 C",
+    "duration" : 3,
+    "id" : "37535DBC-A2E0-4BEC-A5B5-0F06158EC306",
+    "isActive" : false,
+    "imageUrl" : "gunung_bawakaraeng",
+    "grade" : "III",
+    "height" : 2830,
+    "type" : [
+      "steep",
+      "mossy",
+      "slippery",
+      "cold"
+    ]
+  },
+  {
+    "name" : "Gunung Pangrango",
+    "fauna" : "Macan tutul",
+    "location" : "Jawa Barat",
+    "terrain" : "didominasi tanah berbatu, suhu rendah dibawah 5 C pada malam hari, terjal, sering hujan",
+    "duration" : 2,
+    "id" : "0E24DD62-D357-4C13-9491-40E5CB22310C",
+    "isActive" : false,
+    "imageUrl" : "gunung_pangrango",
+    "grade" : "III",
+    "height" : 3026,
+    "type" : [
+      "rocky",
+      "cold",
+      "humid"
+    ]
+  },
+  {
+    "name" : "Gunung Gede",
+    "fauna" : "Macan tutul",
+    "location" : "Jawa Barat",
+    "terrain" : "berbatu, berakar, terjal jika memilih trek tertentu, sering hujan",
+    "duration" : 2,
+    "id" : "E604BD57-5DF7-42FE-A298-2FA81746F81B",
+    "isActive" : true,
+    "imageUrl" : "gunung_gede",
+    "grade" : "III",
+    "height" : 2958,
+    "type" : [
+      "rocky",
+      "rooted",
+      "humid"
+    ]
+  },
+  {
+    "name" : "Gunung Halimun Salak",
+    "fauna" : "Macan tutul Jawa, biawak, ular",
+    "location" : "Jawa Barat",
+    "terrain" : "hutan hujan tropis pegunungan yang rapat, lembap, dan sering berkabut",
+    "duration" : 3,
+    "id" : "36C9C722-E504-4010-B408-82868A2AD2E2",
+    "isActive" : false,
+    "imageUrl" : "gunung_halimunsalak",
+    "grade" : "III",
+    "height" : 1929,
+    "type" : [
+      "forest",
+      "humid",
+      "foggy"
+    ]
+  },
+  {
+    "name" : "Gunung Merbabu",
+    "fauna" : "Elang Jawa",
+    "location" : "Jawa Tengah",
+    "terrain" : "Didominasi oleh banyak batuan besar",
+    "duration" : 2,
+    "id" : "CA78A2E6-36F4-48FF-9FC4-E63A7F6ED3C2",
+    "isActive" : false,
+    "imageUrl" : "gunung_merbabu",
+    "grade" : "III",
+    "height" : 3145,
+    "type" : [
+      "rocky"
+    ]
+  },
+  {
+    "name" : "Gunung Nokilalaki",
+    "fauna" : "Anoa, maleo, tarsius",
+    "location" : "Sulawesi Tengah",
+    "terrain" : "jalur yang terjal menanjak, vegetasi hutan yang rapat, dan cuaca yang tidak menentu",
+    "duration" : 2,
+    "id" : "328E3EB1-5CF6-4BCF-A08A-31AD4F757031",
+    "isActive" : false,
+    "imageUrl" : "gunung_nokilalaki",
+    "grade" : "III",
+    "height" : 2357,
+    "type" : [
+      "steep",
+      "forest",
+      "foggy"
+    ]
+  },
+  {
+    "name" : "Gunung Masurai",
+    "fauna" : "Harimau Sumatra",
+    "location" : "Jambi",
+    "terrain" : "ekstrem, lebat, dan lembap, dengan jalur didominasi akar pohon, hutan lumut rapat, serta tanjakan curam",
+    "duration" : 4,
+    "id" : "B22343D0-B642-446C-803D-940B950CF53E",
+    "isActive" : false,
+    "imageUrl" : "gunung_masurai",
+    "grade" : "III",
+    "height" : 2916,
+    "type" : [
+      "forest",
+      "humid",
+      "rooted",
+      "steep"
+    ]
+  },
+  {
+    "name" : "Gunung Tujuh",
+    "fauna" : "Harimau Sumatra",
+    "location" : "Jambi",
+    "terrain" : "hutan hujan tropis yang lebat",
+    "duration" : 2,
+    "id" : "B714B6A5-1533-4A96-8036-DA824A9DE782",
+    "isActive" : false,
+    "imageUrl" : "danau_gunung_tujuh_kerinci",
+    "grade" : "III",
+    "height" : 2732,
+    "type" : [
+      "forest",
+      "humid"
+    ]
+  },
+  {
+    "name" : "Gunung Kelam",
+    "fauna" : "Beruang madu",
+    "location" : "Kalimantan Barat",
+    "terrain" : "dinding batu curam",
+    "duration" : 1,
+    "id" : "EBB8FEB2-6E32-4F92-B586-5548BEE60E89",
+    "isActive" : false,
+    "imageUrl" : "gunung_kelam",
+    "grade" : "III",
+    "height" : 1002,
+    "type" : [
+      "rocky",
+      "steep"
+    ]
+  },
+  {
+    "name" : "Gunung Kerinci",
+    "fauna" : "Harimau Sumatra",
+    "location" : "Jambi",
+    "terrain" : "hutan tropis lebat, jalur berlumpur yang licin, akar pohon yang menonjol, tanjakan tanah\/batu curam hingga ke batas vegetasi, pasir dan bebatuan vulkanik",
+    "duration" : 3,
+    "id" : "4E0FCA24-52B7-4160-A3DE-B4F84F5BFE9E",
+    "isActive" : true,
+    "imageUrl" : "gunung_kerinci",
+    "grade" : "IV",
+    "height" : 3805,
+    "type" : [
+      "volcanic",
+      "muddy",
+      "steep",
+      "sandy"
+    ]
+  },
+  {
+    "name" : "Gunung Argopuro",
+    "fauna" : "Merak, elang",
+    "location" : "Jawa Timur",
+    "terrain" : "jalur terpanjang, lingkungan yang vegetasi , dengan tiga puncak arca, argapura dan rengganis",
+    "duration" : 5,
+    "id" : "9BF68442-F7AE-4F1A-BA87-5016BEC342FC",
+    "isActive" : false,
+    "imageUrl" : "gunung_argopuro",
+    "grade" : "IV",
+    "height" : 3088,
+    "type" : [
+      "forest"
+    ]
+  },
+  {
+    "name" : "Bukit Raya",
+    "fauna" : "Orang utan, beruang madu, macan dahan",
+    "location" : "Kalimantan Tengah",
+    "terrain" : "hutan hujan tropis (lembab)",
+    "duration" : 7,
+    "id" : "5A84C120-679C-4D8B-9124-93E73F130985",
+    "isActive" : false,
+    "imageUrl" : "gunung_bukit_raya",
+    "grade" : "IV",
+    "height" : 2278,
+    "type" : [
+      "forest",
+      "humid"
+    ]
+  },
+  {
+    "name" : "Gandang Dewata",
+    "fauna" : "Satwa endemik",
+    "location" : "Sulawesi Barat",
+    "terrain" : "gunung tertinggi di sulbar dengan jalur sempit licin , sampai dengan 70 derajat terjal",
+    "duration" : 10,
+    "id" : "3E3CA5BD-AB57-4F4F-A5C8-E5FD5E280613",
+    "isActive" : false,
+    "imageUrl" : "gunung_gandang_dewata",
+    "grade" : "IV",
+    "height" : 3037,
+    "type" : [
+      "slippery",
+      "steep"
+    ]
+  },
+  {
+    "name" : "Gunung Binaiya",
+    "fauna" : "Burung nuri bayan, kasturi",
+    "location" : "Maluku",
+    "terrain" : "gunung yang didominasi dengan bebatuan keras",
+    "duration" : 11,
+    "id" : "3F0DE1A5-BC78-4D3A-B53B-7DE60D41F4FE",
+    "isActive" : false,
+    "imageUrl" : "gunung_binaiya",
+    "grade" : "IV",
+    "height" : 3027,
+    "type" : [
+      "rocky"
+    ]
+  },
+  {
+    "name" : "Gunung Rinjani",
+    "fauna" : "Monyet, elang flores",
+    "location" : "Nusa Tenggara Barat",
+    "terrain" : "terjal, di puncak dominasi pasir serta kerikil vulcanik licin",
+    "duration" : 4,
+    "id" : "9874D04E-2370-48CF-85B3-67064616D197",
+    "isActive" : true,
+    "imageUrl" : "gunung_rinjani",
+    "grade" : "IV",
+    "height" : 3726,
+    "type" : [
+      "volcanic",
+      "steep",
+      "sandy"
+    ]
+  },
+  {
+    "name" : "Gunung Leuser",
+    "fauna" : "Burung kucica ekor kuning",
+    "location" : "Aceh",
+    "terrain" : "hutan hujan tropis perawan yang padat,terjal, berakar , berlumpur",
+    "duration" : 14,
+    "id" : "B0D0F959-B53E-4625-8137-BC64BC5929E6",
+    "isActive" : false,
+    "imageUrl" : "gunung_leuser",
+    "grade" : "V",
+    "height" : 3466,
+    "type" : [
+      "forest",
+      "steep",
+      "rooted",
+      "muddy"
+    ]
+  },
+  {
+    "name" : "Carstensz Pyramid",
+    "fauna" : "Dingo",
+    "location" : "Papua",
+    "terrain" : "tebing batu kapur vertikal menanjak dan licin dengan suhu di bawa 0C , medan teknis",
+    "duration" : 14,
+    "id" : "1F075DE6-1579-4D80-AF3F-49552C759DF3",
+    "isActive" : false,
+    "imageUrl" : "gunung_carstensz_pyramid",
+    "grade" : "V",
+    "height" : 4884,
+    "type" : [
+      "rocky",
+      "climbing",
+      "cold"
+    ]
+  },
+  {
+    "name" : "Gunung Trikora",
+    "fauna" : "Puyuh salju, bebek liar",
+    "location" : "Papua",
+    "terrain" : "panjat tebing,hutan ericaceous tanah lembur, kabut.",
+    "duration" : 10,
+    "id" : "9B759B29-F726-4596-97CA-B5E28AE88F3C",
+    "isActive" : false,
+    "imageUrl" : "gunung_trikora",
+    "grade" : "V",
+    "height" : 4751,
+    "type" : [
+      "climbing",
+      "rocky",
+      "foggy"
+    ]
+  }
+]

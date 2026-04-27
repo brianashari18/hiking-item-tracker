@@ -15,7 +15,7 @@ struct MountainListSection: View {
 
     var body: some View {
         Section("Grade \(grade)") {
-            ForEach(mountains.filter { $0.grade == grade }) { mountain in
+            ForEach(mountains.filter { $0.grade.rawValue == grade }) { mountain in
                 MountainListRow(
                     mountain: mountain,
                     isSelected: mountain.id == selectedMountain.id,

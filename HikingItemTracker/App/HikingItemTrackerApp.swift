@@ -34,8 +34,8 @@ private struct AppRootView: View {
             TripIntroView()
         case .tripSetup(let selectedMountain):
             TripSetupView(mountain: selectedMountain)
-        case .packingChecklist(let mountain, let tripDate):
-            PackingChecklistView(mountain: mountain, tripDate: tripDate)
+        case .packingChecklist(let mountain, let tripDate, let duration, let numberOfPeople):
+            PackingChecklistView(mountain: mountain, tripDate: tripDate, duration: duration, numberOfPeople: numberOfPeople)
         case .onHikeDashboard(let mountain, let hikingTrip):
             OnHikeDashboardView(mountain: mountain, hikingTrip: hikingTrip)
         case .mountainLibrary:

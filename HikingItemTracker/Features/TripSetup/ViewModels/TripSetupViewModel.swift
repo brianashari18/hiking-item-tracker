@@ -31,6 +31,11 @@ final class TripSetupViewModel {
         self.selectedEndDate = Calendar.current.date(byAdding: .day, value: minDurationDays, to: self.selectedStartDate) ?? self.selectedStartDate
     }
     
+    var selectedDuration: Int {
+        let diff = Calendar.current.dateComponents([.day], from: selectedStartDate, to: selectedEndDate).day ?? 0
+        return diff + 1
+    }
+    
     var minimumStartDate: Date {
         Calendar.current.startOfDay(for: Date())
     }

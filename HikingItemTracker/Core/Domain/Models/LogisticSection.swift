@@ -22,7 +22,7 @@ enum SectionCategoryType: Equatable {
 struct LogisticSectionModel: Identifiable, Equatable {
     let id = UUID()
     let categoryType: SectionCategoryType
-    var items: [LogisticItem]
+    var items: [GearItem]
 
     var title: String { categoryType.title }
 

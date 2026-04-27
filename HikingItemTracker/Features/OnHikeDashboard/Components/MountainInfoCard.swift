@@ -40,7 +40,7 @@ struct MountainInfoCard: View {
             // Detail row
             HStack(alignment: .top, spacing: 0) {
                 VStack(alignment: .leading, spacing: 4) {
-                    Text("Grade \(mountain.grade) • \(mountain.difficulty)")
+                    Text("Grade \(mountain.grade.rawValue) • \(mountain.grade.difficulty)")
                         .font(.subheadline)
                         .foregroundStyle(.primary)
 

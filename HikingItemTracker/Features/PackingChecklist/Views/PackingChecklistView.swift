@@ -12,40 +12,39 @@ struct PackingChecklistView: View {
     private let mountain: Mountain?
     @State private var viewModel: PackingChecklistViewModel
     
-    init(mountain: Mountain? = nil, tripDate: String? = nil) {
+    init(mountain: Mountain? = nil, tripDate: String? = nil, duration: Int = 1, numberOfPeople: Int = 1) {
         self.mountain = mountain
-        var trip = HikingTripModel.mock
+        let trip: HikingTripModel
         if let mountain = mountain {
-            trip = HikingTripModel(mountainName: mountain.name, tripDate: tripDate ?? "", sections: trip.sections)
+            trip = ChecklistGenerator.generateTrip(
+                mountain: mountain,
+                tripDate: tripDate ?? "",
+                duration: duration,
+                numberOfPeople: numberOfPeople
+            )
+        } else {
+            trip = .mock
         }
         _viewModel = State(initialValue: PackingChecklistViewModel(hikingTrip: trip))
     }
     
     var body: some View {
         NavigationStack {
-            ScrollView {
-                VStack(alignment: .leading, spacing: 20) {
-
-                    
+            List {
+                Section {
                     PackingChecklistProgressCard(percentage: viewModel.progressPercentage)
-                    
-                    VStack(alignment: .leading, spacing: 20) {
-                        ForEach(viewModel.displayedSections) { section in
-                            LogisticSectionView(
-                                sectionData: section,
-                                onTogglePacked: viewModel.togglePackedState,
-                                onToggleSectionPacked: { viewModel.toggleSectionPackedState(for: $0) },
-                                onTapItem: viewModel.selectItem,
-                                onDeleteItem: viewModel.deleteItem
-                            )
-                        }
-                    }
-                    
-                    Spacer()
+                        .listRowInsets(EdgeInsets())
+                        .listRowBackground(Color.clear)
                 }
-                .padding(20)
+                .listRowSeparator(.hidden)
+
+                ForEach(viewModel.displayedSections) { section in
+                    sectionView(for: section)
+                }
             }
-            .coordinateSpace(name: "scroll")
+            .listStyle(.insetGrouped)
+            .background(.black.opacity(0.05))
+            .scrollContentBackground(.hidden)
             .safeAreaInset(edge: .bottom) {
                 BottomActionButton(
                     title: viewModel.progressPercentage < 1.0
@@ -104,9 +103,6 @@ struct PackingChecklistView: View {
                     }
                 }
             }
-            
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .background(.black.opacity(0.05))
         }
         .sheet(item: $viewModel.selectedItem) { item in
             AddEditItemView(item: item, onSave: viewModel.updateItem)
@@ -115,9 +111,55 @@ struct PackingChecklistView: View {
             AddEditItemView(onSave: viewModel.addItem)
         }
     }
+
+    private func sectionView(for section: LogisticSectionModel) -> some View {
+        Section {
+            ForEach(section.items) { item in
+                GearItemRow(
+                    item: item,
+                    onTogglePacked: { viewModel.togglePackedState(for: item) },
+                    onTapDetails: { viewModel.selectItem(item) }
+                )
+                .swipeActions(edge: .trailing, allowsFullSwipe: true) {
+                    Button(role: .destructive) {
+                        viewModel.deleteItem(item)
+                    } label: {
+                        Label("Hapus", systemImage: "trash")
+                    }
+                }
+            }
+        } header: {
+            sectionHeaderView(for: section)
+        }
+    }
+
+    private func sectionHeaderView(for section: LogisticSectionModel) -> some View {
+        HStack(alignment: .bottom) {
+            Text(section.title)
+                .font(.headline)
+                .fontWeight(.bold)
+                .foregroundStyle(.primary)
+
+            Spacer()
+
+            HStack {
+                Button {
+                    viewModel.toggleSectionPackedState(for: section)
+                } label: {
+                    Image(systemName: section.itemCount == section.totalCount ? "checkmark.circle.fill" : "circle")
+                        .foregroundStyle(section.itemCount == section.totalCount ? .green : .secondary)
+                }
+                
+                Text("\(section.itemCount)/\(section.totalCount)")
+                    .font(.subheadline)
+                    .foregroundStyle(.secondary)
+            }
+        }
+        .textCase(nil)
+    }
 }
 
 #Preview {
-    PackingChecklistView()
+    PackingChecklistView(mountain: Mountain.mocks.first!, tripDate: "1 Jan 2024", duration: 1, numberOfPeople: 1)
         .environment(AppRouter())
 }

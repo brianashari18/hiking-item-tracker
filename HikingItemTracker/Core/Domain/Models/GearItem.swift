@@ -1,13 +1,13 @@
 //
-//  LogisticItem.swift
+//  GearItem.swift
 //  HikingItemTracker
 //
-//  Created by Brian Anashari on 19/04/26.
+//  Created by Antigravity on 27/04/26.
 //
 
 import Foundation
 
-struct LogisticItem: Identifiable, Equatable {
+struct GearItem: Identifiable, Hashable, Equatable {
     let id: UUID
     var name: String
     var quantity: Int
@@ -15,7 +15,7 @@ struct LogisticItem: Identifiable, Equatable {
     var ownership: ItemOwnership
     var functionalCategory: ItemFunctionalCategory
     var zoneCategory: ItemZoneCategory
-    var isEssential: Bool
+    var necessity: GearNecessity
     var isPacked: Bool
 
     init(
@@ -26,7 +26,7 @@ struct LogisticItem: Identifiable, Equatable {
         ownership: ItemOwnership = .pribadi,
         functionalCategory: ItemFunctionalCategory = .personalItem,
         zoneCategory: ItemZoneCategory = .bottom,
-        isEssential: Bool = false,
+        necessity: GearNecessity = .optional,
         isPacked: Bool = false
     ) {
         self.id = id
@@ -36,7 +36,7 @@ struct LogisticItem: Identifiable, Equatable {
         self.ownership = ownership
         self.functionalCategory = functionalCategory
         self.zoneCategory = zoneCategory
-        self.isEssential = isEssential
+        self.necessity = necessity
         self.isPacked = isPacked
     }
 }

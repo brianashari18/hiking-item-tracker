@@ -69,7 +69,7 @@ struct MountainDetailSheet: View {
     }
 
     private var descriptionText: String {
-        "\(mountain.name) berada di \(mountain.location) dengan ketinggian \(mountain.height) mdpl. Jalur pendakiannya \(mountain.difficulty.lowercased()) dan umumnya ditempuh sekitar \(mountain.duration) hari."
+        "\(mountain.name) berada di \(mountain.location) dengan ketinggian \(mountain.height) mdpl. Jalur pendakiannya \(mountain.grade.difficulty.lowercased()) dan umumnya ditempuh sekitar \(mountain.duration) hari."
     }
 
     private var gradeGradient: LinearGradient {
@@ -85,15 +85,15 @@ struct MountainDetailSheet: View {
 
     private var gradeAccentColor: Color {
         switch mountain.grade {
-        case "I":
+        case .level1:
             return Color(hue: 0.42, saturation: 0.6, brightness: 0.75)
-        case "II":
+        case .level2:
             return Color(hue: 0.55, saturation: 0.65, brightness: 0.75)
-        case "III":
+        case .level3:
             return Color(hue: 0.10, saturation: 0.70, brightness: 0.85)
-        case "IV":
+        case .level4:
             return Color(hue: 0.03, saturation: 0.80, brightness: 0.80)
-        default:
+        case .level5:
             return Color(hue: 0.78, saturation: 0.60, brightness: 0.55)
         }
     }

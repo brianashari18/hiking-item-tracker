@@ -12,15 +12,15 @@ struct AddEditItemView: View {
 
     @State private var viewModel: AddEditItemViewModel
 
-    var onSave: ((LogisticItem) -> Void)?
+    var onSave: ((GearItem) -> Void)?
 
     // MARK: - Init
-    init(onSave: ((LogisticItem) -> Void)? = nil) {
+    init(onSave: ((GearItem) -> Void)? = nil) {
         _viewModel = State(initialValue: AddEditItemViewModel())
         self.onSave = onSave
     }
 
-    init(item: LogisticItem, onSave: ((LogisticItem) -> Void)? = nil) {
+    init(item: GearItem, onSave: ((GearItem) -> Void)? = nil) {
         _viewModel = State(initialValue: AddEditItemViewModel(item: item))
         self.onSave = onSave
     }
@@ -195,13 +195,13 @@ struct AddEditItemView: View {
 
 #Preview("Edit Mode") {
     AddEditItemView(
-        item: LogisticItem(
+        item: GearItem(
             name: "Beras",
             quantity: 100,
             unit: .gr,
             ownership: .kelompok,
             functionalCategory: .logisticAndFood,
-            isEssential: true,
+            necessity: .universalEssential,
             isPacked: true
         )
     )

@@ -27,7 +27,7 @@ struct MountainDetailHeroSection: View {
             
             VStack(alignment: .leading, spacing: 6) {
                 HStack(spacing: 6) {
-                    Text("Grade \(mountain.grade)")
+                    Text("Grade \(mountain.grade.rawValue)")
                         .font(.caption)
                         .fontWeight(.bold)
                         .foregroundStyle(.white)
@@ -36,7 +36,7 @@ struct MountainDetailHeroSection: View {
                         .background(gradeAccentColor.opacity(0.7))
                         .clipShape(Capsule())
                     
-                    Text(mountain.difficulty)
+                    Text(mountain.grade.difficulty)
                         .font(.caption)
                         .foregroundStyle(.white.opacity(0.85))
                 }

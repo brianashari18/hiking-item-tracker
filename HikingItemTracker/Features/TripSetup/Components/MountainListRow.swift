@@ -21,7 +21,7 @@ struct MountainListRow: View {
                         .fontWeight(.bold)
                         .foregroundColor(.primary)
                     
-                    Text("Grade \(mountain.grade) • \(mountain.difficulty) (\(mountain.duration) Hari)")
+                    Text("Grade \(mountain.grade.rawValue) • \(mountain.grade.difficulty) (\(mountain.duration) Hari)")
                         .font(.subheadline)
                         .foregroundColor(.secondary)
                     

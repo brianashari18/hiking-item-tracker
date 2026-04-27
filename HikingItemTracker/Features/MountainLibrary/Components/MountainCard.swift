@@ -34,7 +34,7 @@ struct MountainCard: View {
                     HStack {
                         HStack(spacing: 4) {
                             Image(systemName: "arrow.up.circle.fill")
-                            Text(mountain.difficulty)
+                            Text(mountain.grade.difficulty)
                         }
                         
                         Spacer()
@@ -55,7 +55,7 @@ struct MountainCard: View {
         .overlay(alignment: .topTrailing) {
             HStack(spacing: 4) {
                 Image(systemName: "figure.hiking")
-                Text("Grade \(mountain.grade)")
+                Text("Grade \(mountain.grade.rawValue)")
             }
             .font(.caption2)
             .fontWeight(.bold)

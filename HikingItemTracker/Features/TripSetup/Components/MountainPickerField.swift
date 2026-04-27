@@ -28,7 +28,7 @@ struct MountainPickerField: View {
         NavigationStack {
             List {
                 ForEach(grades, id: \.self) { grade in
-                    let mountainsInGrade = filteredMountains.filter { $0.grade == grade }
+                    let mountainsInGrade = filteredMountains.filter { $0.grade.rawValue == grade }
                     
                     if !mountainsInGrade.isEmpty {
                         MountainListSection(

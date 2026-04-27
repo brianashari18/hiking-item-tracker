@@ -11,9 +11,9 @@ struct StatusBarangView: View {
     @Environment(\.dismiss) private var dismiss
 
     let mountainName: String
-    let items: [LogisticItem]
+    let items: [GearItem]
     let progressPercentage: CGFloat
-    let onToggleItem: (LogisticItem) -> Void
+    let onToggleItem: (GearItem) -> Void
 
     @State private var selectedPhase: HikePhase = .istirahat
 
@@ -78,7 +78,7 @@ struct StatusBarangView: View {
 
 
 private struct StatusBarangItemRow: View {
-    let item: LogisticItem
+    let item: GearItem
     let onToggle: () -> Void
 
     var body: some View {
@@ -97,7 +97,7 @@ private struct StatusBarangItemRow: View {
                         .strikethrough(item.isPacked)
                         .foregroundStyle(item.isPacked ? .secondary : .primary)
 
-                    if item.isEssential {
+                    if item.necessity == .universalEssential {
                         Image(systemName: "exclamationmark.triangle.fill")
                             .font(.caption)
                             .foregroundStyle(.orange)

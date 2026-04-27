@@ -24,7 +24,7 @@ enum PackingChecklistGroupingMode: String, CaseIterable, Identifiable {
 @Observable
 final class PackingChecklistViewModel {
     var hikingTrip: HikingTripModel
-    var selectedItem: LogisticItem?
+    var selectedItem: GearItem?
     var isAddSheetPresented: Bool = false
     var groupingMode: PackingChecklistGroupingMode = .functional
 
@@ -49,7 +49,7 @@ final class PackingChecklistViewModel {
     }
 
 
-    func togglePackedState(for item: LogisticItem) {
+    func togglePackedState(for item: GearItem) {
         var updated = item
         updated.isPacked.toggle()
         updateItem(updated)
@@ -76,7 +76,7 @@ final class PackingChecklistViewModel {
         }
     }
 
-    func updateItem(_ updatedItem: LogisticItem) {
+    func updateItem(_ updatedItem: GearItem) {
         for sectionIndex in hikingTrip.sections.indices {
             if let itemIndex = hikingTrip.sections[sectionIndex].items.firstIndex(where: { $0.id == updatedItem.id }) {
                 hikingTrip.sections[sectionIndex].items[itemIndex] = updatedItem
@@ -85,7 +85,7 @@ final class PackingChecklistViewModel {
         }
     }
 
-    func addItem(_ newItem: LogisticItem) {
+    func addItem(_ newItem: GearItem) {
         // Find section matching the item's functional category
         if let sectionIndex = hikingTrip.sections.firstIndex(where: {
             if case .functional(let cat) = $0.categoryType {
@@ -105,11 +105,11 @@ final class PackingChecklistViewModel {
         }
     }
 
-    func selectItem(_ item: LogisticItem) {
+    func selectItem(_ item: GearItem) {
         selectedItem = item
     }
 
-    func deleteItem(_ item: LogisticItem) {
+    func deleteItem(_ item: GearItem) {
         for sectionIndex in hikingTrip.sections.indices {
             hikingTrip.sections[sectionIndex].items.removeAll { $0.id == item.id }
         }
@@ -119,7 +119,7 @@ final class PackingChecklistViewModel {
 
     // MARK: - Private Helpers
 
-    private func allItems() -> [LogisticItem] {
+    private func allItems() -> [GearItem] {
         hikingTrip.sections.flatMap(\.items)
     }
 
