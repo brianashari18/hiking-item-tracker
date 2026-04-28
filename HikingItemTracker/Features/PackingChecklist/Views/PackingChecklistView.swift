@@ -17,7 +17,6 @@ struct PackingChecklistView: View {
         self.mountain = mountain
         let trip: HikingTripModel
 
-        // Kalau ada trip tersimpan untuk gunung yang sama, restore langsung
         if let saved = savedTrip, saved.mountain == mountain {
             trip = saved
         } else if let mountain = mountain {
@@ -37,7 +36,7 @@ struct PackingChecklistView: View {
         NavigationStack {
             List {
                 Section {
-                    PackingChecklistProgressCard(percentage: viewModel.progressPercentage)
+                    PackingChecklistProgressCard(sections: viewModel.displayedSections)
                         .listRowInsets(EdgeInsets())
                         .listRowBackground(Color.clear)
                 }
@@ -85,23 +84,20 @@ struct PackingChecklistView: View {
                 
                 ToolbarItem(placement: .topBarTrailing) {
                     Menu {
-                        Button(action: {}) {
-                            Label("Bag View", systemImage: "briefcase")
-                        }
-                        
                         Button(action: {
                             viewModel.checkAllItems()
                         }) {
-                            Label("Checklist Semua", systemImage: "checkmark.circle")
+                            Label("Ceklis Semua", systemImage: "checkmark.circle")
                         }
                         
                         Divider()
                         
-                        Picker("Kategori Berdasarkan", selection: $viewModel.groupingMode) {
-                            ForEach(PackingChecklistGroupingMode.allCases) { mode in
-                                Text(mode.displayTitle).tag(mode)
-                            }
+                        Button(action: {
+                            viewModel.unCheckAllItems()
+                        }) {
+                            Label("Unceklis Semua", systemImage: "xmark.circle")
                         }
+                        
                     } label: {
                         Image(systemName: "ellipsis")
                     }

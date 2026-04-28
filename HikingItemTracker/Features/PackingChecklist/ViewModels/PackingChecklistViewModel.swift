@@ -75,6 +75,14 @@ final class PackingChecklistViewModel {
             }
         }
     }
+    
+    func unCheckAllItems() {
+        for sectionIndex in hikingTrip.sections.indices {
+            for itemIndex in hikingTrip.sections[sectionIndex].items.indices {
+                hikingTrip.sections[sectionIndex].items[itemIndex].isPacked = false
+            }
+        }
+    }
 
     func updateItem(_ updatedItem: GearItem) {
         for sectionIndex in hikingTrip.sections.indices {

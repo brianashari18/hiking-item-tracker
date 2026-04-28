@@ -54,12 +54,7 @@ struct OnHikeDashboardView: View {
             session.activeTrip = newValue
         }
         .sheet(isPresented: $viewModel.isStatusSheetPresented) {
-            StatusBarangView(
-                mountainName: viewModel.mountain.name,
-                items: viewModel.filteredItems,
-                progressPercentage: viewModel.progressPercentage,
-                onToggleItem: viewModel.toggleItemPacked
-            )
+            StatusBarangView(sections: viewModel.hikingTrip.sections)
         }
         .alert("Perjalanan Selesai", isPresented: $viewModel.isFinishAlertPresented) {
             Button("Tidak", role: .cancel) {}
