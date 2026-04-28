@@ -17,7 +17,7 @@ struct MountainDetailSheet: View {
         NavigationStack {
             ScrollView {
                 VStack(alignment: .leading, spacing: 0) {
-                    MountainDetailHeroSection(mountain: mountain, gradeAccentColor: gradeAccentColor)
+                    MountainDetailHeroSection(mountain: mountain, gradeAccentColor: mountain.grade.accentColor)
 
                     VStack(alignment: .leading, spacing: 24) {
                         Text(descriptionText)
@@ -29,7 +29,7 @@ struct MountainDetailSheet: View {
 
                         MountainDetailStatsSection(
                             mountain: mountain,
-                            gradeAccentColor: gradeAccentColor
+                            gradeAccentColor: mountain.grade.accentColor
                         )
 
                         Divider()
@@ -41,8 +41,8 @@ struct MountainDetailSheet: View {
                         Spacer()
                         
                         MountainDetailCTAButton(
-                            gradeGradient: gradeGradient,
-                            gradeAccentColor: gradeAccentColor,
+                            gradeGradient: mountain.grade.gradient,
+                            gradeAccentColor: mountain.grade.accentColor,
                             selectedMountain: mountain
                         ) {
                             dismiss()
@@ -70,32 +70,6 @@ struct MountainDetailSheet: View {
 
     private var descriptionText: String {
         "\(mountain.name) berada di \(mountain.location) dengan ketinggian \(mountain.height) mdpl. Jalur pendakiannya \(mountain.grade.difficulty.lowercased()) dan umumnya ditempuh sekitar \(mountain.duration) hari."
-    }
-
-    private var gradeGradient: LinearGradient {
-        LinearGradient(
-            colors: [
-                gradeAccentColor.opacity(0.95),
-                gradeAccentColor.opacity(0.75)
-            ],
-            startPoint: .topLeading,
-            endPoint: .bottomTrailing
-        )
-    }
-
-    private var gradeAccentColor: Color {
-        switch mountain.grade {
-        case .level1:
-            return Color(hue: 0.42, saturation: 0.6, brightness: 0.75)
-        case .level2:
-            return Color(hue: 0.55, saturation: 0.65, brightness: 0.75)
-        case .level3:
-            return Color(hue: 0.10, saturation: 0.70, brightness: 0.85)
-        case .level4:
-            return Color(hue: 0.03, saturation: 0.80, brightness: 0.80)
-        case .level5:
-            return Color(hue: 0.78, saturation: 0.60, brightness: 0.55)
-        }
     }
 }
 

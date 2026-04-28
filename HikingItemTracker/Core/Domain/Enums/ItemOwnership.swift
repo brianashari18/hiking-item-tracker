@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum ItemOwnership: String, CaseIterable, Identifiable {
+enum ItemOwnership: String, CaseIterable, Identifiable, Codable {
     case pribadi = "Pribadi"
     case kelompok = "Kelompok"
     case sewaan = "Sewaan"

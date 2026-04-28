@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct GearItem: Identifiable, Hashable, Equatable {
+struct GearItem: Identifiable, Hashable, Equatable, Codable {
     let id: UUID
     var name: String
     var quantity: Int

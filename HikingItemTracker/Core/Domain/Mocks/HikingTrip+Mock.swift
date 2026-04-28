@@ -9,7 +9,7 @@ import Foundation
 
 extension HikingTripModel {
     static let mock = HikingTripModel(
-        mountainName: "Gunung Rinjani",
+        mountain: Mountain.mocks[0],
         tripDate: "24 November 2027",
         duration: 3,
         numberOfPeople: 1,

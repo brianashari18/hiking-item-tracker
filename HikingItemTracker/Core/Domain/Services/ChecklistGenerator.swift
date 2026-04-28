@@ -24,7 +24,7 @@ struct ChecklistGenerator {
         ]
         
         return HikingTripModel(
-            mountainName: mountain.name,
+            mountain: mountain,
             tripDate: tripDate,
             duration: duration,
             numberOfPeople: numberOfPeople,

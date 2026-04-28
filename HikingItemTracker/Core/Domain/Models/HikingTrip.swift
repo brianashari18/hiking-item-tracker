@@ -7,12 +7,14 @@
 
 import Foundation
 
-struct HikingTripModel: Equatable {
-    let mountainName: String
+struct HikingTripModel: Equatable, Codable {
+    let mountain: Mountain
     let tripDate: String
     let duration: Int
     let numberOfPeople: Int
     var sections: [LogisticSectionModel]
+
+    var mountainName: String { mountain.name }
 
     var progressPercentage: CGFloat {
         let items = sections.flatMap(\.items)

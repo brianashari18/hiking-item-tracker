@@ -9,6 +9,7 @@ import SwiftUI
 
 struct OnHikeDashboardView: View {
     @Environment(AppRouter.self) private var router
+    @Environment(AppSession.self) private var session
     @State private var viewModel: OnHikeDashboardViewModel
     
     init(mountain: Mountain, hikingTrip: HikingTripModel) {
@@ -25,7 +26,7 @@ struct OnHikeDashboardView: View {
                         .multilineTextAlignment(.center)
                         .padding(.top, 24)
 
-                    LottieView(animationName: "hiking_animation")
+                    LottieView(animationName: "Traveler")
                         .frame(height: 280)
                         .padding(.horizontal, 20)
 
@@ -49,6 +50,9 @@ struct OnHikeDashboardView: View {
             finishButton
         }
         .background(Color(.systemGroupedBackground).ignoresSafeArea())
+        .onChange(of: viewModel.hikingTrip) { _, newValue in
+            session.activeTrip = newValue
+        }
         .sheet(isPresented: $viewModel.isStatusSheetPresented) {
             StatusBarangView(
                 mountainName: viewModel.mountain.name,
@@ -60,6 +64,7 @@ struct OnHikeDashboardView: View {
         .alert("Perjalanan Selesai", isPresented: $viewModel.isFinishAlertPresented) {
             Button("Tidak", role: .cancel) {}
             Button("Yakin", role: .destructive) {
+                session.activeTrip = nil
                 router.showTripSetupFromFinish()
             }
         } message: {
@@ -89,4 +94,5 @@ struct OnHikeDashboardView: View {
 #Preview {
     OnHikeDashboardView(mountain: Mountain.mocks.first!, hikingTrip: .mock)
         .environment(AppRouter())
+        .environment(AppSession())
 }

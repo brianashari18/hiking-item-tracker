@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum ItemFunctionalCategory: String, CaseIterable, Identifiable {
+enum ItemFunctionalCategory: String, CaseIterable, Identifiable, Codable {
     case shelter            = "Shelter"
     case personalItem       = "Barang Pribadi"
     case logisticAndFood    = "Logistik & Makanan"

@@ -11,74 +11,114 @@ struct TripSetupView: View {
 
     var body: some View {
         @Bindable var viewModel = viewModel
-
-        ZStack(alignment: .topLeading) {
-            ScrollView {
-                VStack(spacing: 28) {
-                    VStack(alignment: .leading, spacing: 0) {
-                        Image(viewModel.selectedMountain.imageUrl)
-                            .resizable()
-                            .aspectRatio(contentMode: .fill)
-                            .frame(width: UIScreen.main.bounds.width, height: 280)
-                            .clipped()
+        
+        NavigationStack {
+            VStack(alignment: .leading, spacing: 0) {
+                Image(viewModel.selectedMountain.imageUrl)
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+                    .frame(width: UIScreen.main.bounds.width)
+                    .clipped()
+                
+                VStack(alignment: .leading, spacing: 8) {
+                    HStack(spacing: 6) {
+                        Text("Grade \(viewModel.selectedMountain.grade.rawValue)")
+                            .font(.caption)
+                            .fontWeight(.bold)
+                            .foregroundStyle(.white)
+                            .padding(.horizontal, 10)
+                            .padding(.vertical, 4)
+                            .background(viewModel.selectedMountain.grade.accentColor.opacity(0.8))
+                            .clipShape(Capsule())
                         
-                        VStack(alignment: .leading, spacing: 4) {
-                            Text(viewModel.selectedMountain.name)
-                                .font(.title2)
-                                .fontWeight(.bold)
-                                .foregroundStyle(.primary)
-                                .lineLimit(1)
-                                .minimumScaleFactor(0.5)
-                            
-                            HStack(spacing: 4) {
-                                Image(systemName: "mappin.and.ellipse")
-                                    .font(.caption)
-                                Text("\(viewModel.selectedMountain.location) • Grade \(viewModel.selectedMountain.grade.rawValue)")
-                                    .font(.subheadline)
-                            }
+                        Text(viewModel.selectedMountain.grade.difficulty)
+                            .font(.caption)
                             .foregroundStyle(.secondary)
-                        }
-                        .padding(20)
                     }
-                    
-                    VStack(spacing: 24) {
-                        TripFormSection(title: "Kapan Jadwal Pendakiannya?") {
-                            TripDateRangeField(
-                                startDate: $viewModel.selectedStartDate,
-                                endDate: $viewModel.selectedEndDate,
-                                minimumStartDate: viewModel.minimumStartDate,
-                                minimumEndDate: viewModel.minimumEndDate,
-                                onStartDateChange: viewModel.updateStartDate
-                            )
-                        }
 
-                        TripFormSection(title: "Berapa Orang yang akan Ikut Mendaki?") {
-                            PeopleCounterField(numberOfPeople: $viewModel.numberOfPeople)
+                    Text(viewModel.selectedMountain.name)
+                        .font(.title2)
+                        .fontWeight(.bold)
+                        .foregroundStyle(.primary)
+                        .lineLimit(1)
+                        .minimumScaleFactor(0.5)
+                    
+                    HStack(spacing: 4) {
+                        Image(systemName: "mappin.and.ellipse")
+                            .font(.caption)
+                        Text(viewModel.selectedMountain.location)
+                            .font(.subheadline)
+                    }
+                    .foregroundStyle(.secondary)
+                }
+                .padding(20)
+            }
+            .listRowInsets(EdgeInsets())
+            .listRowBackground(Color.clear)
+            .listRowSeparator(.hidden)
+
+            
+            List {
+                
+                Section {
+                    DatePicker(selection: $viewModel.selectedStartDate, in: viewModel.minimumStartDate..., displayedComponents: [.date]) {
+                        Text("Tanggal Naik")
+                            .foregroundStyle(.primary)
+                    }
+                    .onChange(of: viewModel.selectedStartDate) { _, newValue in
+                        viewModel.updateStartDate(newValue)
+                    }
+
+                    DatePicker(selection: $viewModel.selectedEndDate, in: viewModel.minimumEndDate..., displayedComponents: [.date]) {
+                        Text("Tanggal Turun")
+                            .foregroundStyle(.primary)
+                    }
+                } header: {
+                    Text("Jadwal Pendakian")
+                        .font(.subheadline)
+                        .fontWeight(.bold)
+                }
+
+                Section {
+                    HStack {
+                        Text("Jumlah Pendaki")
+                        
+                        Spacer()
+                        
+                        HStack(spacing: 20) {
+                            Button {
+                                if viewModel.numberOfPeople > 1 {
+                                    viewModel.numberOfPeople -= 1
+                                }
+                            } label: {
+                                Image(systemName: "minus.circle.fill")
+                                    .font(.title2)
+                                    .foregroundStyle(viewModel.numberOfPeople > 1 ? viewModel.selectedMountain.grade.accentColor : .secondary.opacity(0.3))
+                            }
+                            .buttonStyle(.plain)
+                            
+                            Text("\(viewModel.numberOfPeople)")
+                                .font(.system(size: 18, weight: .bold, design: .rounded))
+                                .frame(minWidth: 24)
+                            
+                            Button {
+                                if viewModel.numberOfPeople < 20 {
+                                    viewModel.numberOfPeople += 1
+                                }
+                            } label: {
+                                Image(systemName: "plus.circle.fill")
+                                    .font(.title2)
+                                    .foregroundStyle(viewModel.numberOfPeople < 20 ? viewModel.selectedMountain.grade.accentColor : .secondary.opacity(0.3))
+                            }
+                            .buttonStyle(.plain)
                         }
                     }
-                    .padding(.horizontal, 20)
-                    
+                } header: {
+                    Text("Anggota Kelompok")
+                        .font(.subheadline)
+                        .fontWeight(.bold)
                 }
-            }
-            .ignoresSafeArea(edges: .top)
-            
-            // Back Button
-            Button {
-                router.showMountainLibrary()
-            } label: {
-                Image(systemName: "chevron.left")
-                    .font(.headline)
-                    .foregroundStyle(.black)
-                    .frame(width: 40, height: 40)
-                    .background(Color.white)
-                    .clipShape(Circle())
-                    .shadow(radius: 2)
-            }
-            .padding(.top, 60)
-            .padding(.leading, 20)
-        }
-        .safeAreaInset(edge: .bottom) {
-            VStack {
+                
                 Button {
                     let dateFormatter = DateFormatter()
                     dateFormatter.locale = Locale(identifier: "id_ID")
@@ -105,22 +145,26 @@ struct TripSetupView: View {
                 .buttonStyle(.plain)
                 .frame(maxWidth: .infinity)
                 .padding()
-                .background(.green.opacity(viewModel.isFormValid ? 0.8 : 0.5))
+                .background(viewModel.selectedMountain.grade.accentColor.opacity(viewModel.isFormValid ? 0.9 : 0.5))
                 .foregroundStyle(.white)
                 .fontWeight(.bold)
                 .clipShape(RoundedRectangle(cornerRadius: 20))
                 .disabled(!viewModel.isFormValid)
-                .padding(.horizontal, 30)
-                .padding(.bottom, 10)
+                .listRowInsets(EdgeInsets())
+                .listRowBackground(Color.clear)
+                .listRowSeparator(.hidden)
             }
-            .padding(.top, 16)
-            .background(
-                Rectangle()
-                    .fill(.background)
-                    .ignoresSafeArea(edges: .bottom)
-                    .shadow(color: .black.opacity(0.05), radius: 8, x: 0, y: -4)
-            )
+            .toolbar {
+                ToolbarItem(placement: .topBarLeading) {
+                    Button {
+                        router.showMountainLibrary()
+                    } label: {
+                        Image(systemName: "chevron.left")
+                    }
+                }
+            }
         }
+        
     }
 }
 

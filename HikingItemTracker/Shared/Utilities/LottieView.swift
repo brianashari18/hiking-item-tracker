@@ -10,26 +10,7 @@
 //
 
 import SwiftUI
-
-// MARK: - Lottie Wrapper
-// Uncomment the block below after adding the Lottie SPM package:
-//
-// import Lottie
-//
-// struct LottieView: UIViewRepresentable {
-//     let animationName: String
-//     var loopMode: LottieLoopMode = .loop
-//
-//     func makeUIView(context: Context) -> LottieAnimationView {
-//         let view = LottieAnimationView(name: animationName)
-//         view.loopMode = loopMode
-//         view.contentMode = .scaleAspectFit
-//         view.play()
-//         return view
-//     }
-//
-//     func updateUIView(_ uiView: LottieAnimationView, context: Context) {}
-// }
+import DotLottie
 
 // MARK: - Placeholder (used until Lottie is installed)
 struct LottieView: View {
@@ -37,25 +18,17 @@ struct LottieView: View {
     var loopMode: String = "loop"
 
     var body: some View {
-        ZStack {
-            RoundedRectangle(cornerRadius: 20)
-                .fill(Color(.systemGroupedBackground))
-
-            VStack(spacing: 12) {
-                Image(systemName: "figure.hiking")
-                    .font(.system(size: 64))
-                    .foregroundStyle(.green)
-
-                Text("Lottie: \(animationName)")
-                    .font(.caption)
-                    .foregroundStyle(.secondary)
-            }
+            DotLottieAnimation(
+                fileName: animationName,
+                config: AnimationConfig(autoplay: true, loop: true)
+            )
+            .view()
         }
-    }
+
 }
 
 #Preview {
-    LottieView(animationName: "hiking_animation")
+    LottieView(animationName: "Traveler")
         .frame(width: 300, height: 280)
         .padding()
 }

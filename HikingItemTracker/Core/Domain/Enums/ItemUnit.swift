@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum ItemUnit: String, CaseIterable, Identifiable {
+enum ItemUnit: String, CaseIterable, Identifiable, Codable {
     case gr = "gr"
     case kg = "kg"
     case ml = "ml"

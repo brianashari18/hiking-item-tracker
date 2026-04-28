@@ -9,6 +9,7 @@ import SwiftUI
 
 struct PackingChecklistView: View {
     @Environment(AppRouter.self) private var router
+    @Environment(AppSession.self) private var session
     private let mountain: Mountain?
     @State private var viewModel: PackingChecklistViewModel
     
@@ -45,6 +46,12 @@ struct PackingChecklistView: View {
             .listStyle(.insetGrouped)
             .background(.black.opacity(0.05))
             .scrollContentBackground(.hidden)
+            .onAppear {
+                session.activeTrip = viewModel.hikingTrip
+            }
+            .onChange(of: viewModel.hikingTrip) { _, newValue in
+                session.activeTrip = newValue
+            }
             .safeAreaInset(edge: .bottom) {
                 BottomActionButton(
                     title: viewModel.progressPercentage < 1.0

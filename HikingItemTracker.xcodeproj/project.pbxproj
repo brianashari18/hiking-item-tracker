@@ -6,6 +6,11 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		31CFBF232FA045C300513205 /* DotLottie in Frameworks */ = {isa = PBXBuildFile; productRef = 31CFBF222FA045C300513205 /* DotLottie */; };
+		31CFBF252FA045C300513205 /* DotLottiePlayer in Frameworks */ = {isa = PBXBuildFile; productRef = 31CFBF242FA045C300513205 /* DotLottiePlayer */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		31B3446F2F8E3601002A9265 /* HikingItemTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HikingItemTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -23,6 +28,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				31CFBF252FA045C300513205 /* DotLottiePlayer in Frameworks */,
+				31CFBF232FA045C300513205 /* DotLottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -65,6 +72,8 @@
 			);
 			name = HikingItemTracker;
 			packageProductDependencies = (
+				31CFBF222FA045C300513205 /* DotLottie */,
+				31CFBF242FA045C300513205 /* DotLottiePlayer */,
 			);
 			productName = HikingItemTracker;
 			productReference = 31B3446F2F8E3601002A9265 /* HikingItemTracker.app */;
@@ -94,6 +103,9 @@
 			);
 			mainGroup = 31B344662F8E3600002A9265;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				31CFBF212FA045C300513205 /* XCRemoteSwiftPackageReference "dotlottie-ios" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 31B344702F8E3601002A9265 /* Products */;
 			projectDirPath = "";
@@ -332,6 +344,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		31CFBF212FA045C300513205 /* XCRemoteSwiftPackageReference "dotlottie-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/LottieFiles/dotlottie-ios";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		31CFBF222FA045C300513205 /* DotLottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 31CFBF212FA045C300513205 /* XCRemoteSwiftPackageReference "dotlottie-ios" */;
+			productName = DotLottie;
+		};
+		31CFBF242FA045C300513205 /* DotLottiePlayer */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 31CFBF212FA045C300513205 /* XCRemoteSwiftPackageReference "dotlottie-ios" */;
+			productName = DotLottiePlayer;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 31B344672F8E3600002A9265 /* Project object */;
 }

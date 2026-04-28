@@ -8,10 +8,11 @@
     import SwiftUI
 
     struct MountainLibraryView: View {
+        @Environment(AppSession.self) private var session
+        @Environment(AppRouter.self) private var router
+        
         @State var searchedMountain: String = ""
         @State private var selectedMountain: Mountain?
-        
-        @Environment(AppRouter.self) private var router
         
         let columns = [
             GridItem(.flexible()),
@@ -22,14 +23,13 @@
         
         var filteredMountains: [Mountain] {
             var result = allMountains
-                    if !searchedMountain.isEmpty {
-                        result = result.filter { $0.name.localizedCaseInsensitiveContains(searchedMountain) }
-                    }
-            
+            if !searchedMountain.isEmpty {
+                result = result.filter { $0.name.localizedCaseInsensitiveContains(searchedMountain) }
+            }
             
             if selectedGrade != "Semua" {
-                        result = result.filter { $0.grade.rawValue == selectedGrade }
-                    }
+                result = result.filter { $0.grade.rawValue == selectedGrade }
+            }
             
             return result
         }
@@ -39,36 +39,61 @@
         
         var body: some View {
             NavigationStack {
-                VStack {
+                VStack(spacing: 0) {
                     Picker("Grade", selection: $selectedGrade) {
                         ForEach(grades, id: \.self) { grade in
                             Text(grade == "Semua" ? "Semua" : grade).tag(grade)
                         }
                     }
                     .pickerStyle(.segmented)
-                    .padding(.horizontal)
+                    .padding()
                     
-                    Group {
-                        if filteredMountains.isEmpty {
-                            ContentUnavailableView.search(text: searchedMountain)
-                        } else {
-                            ScrollView() {
-                                VStack(alignment: .leading) {
-                                    LazyVGrid(columns: columns, spacing: 10) {
-                                        ForEach(filteredMountains, id: \.self) { mountain in
-                                            Button {
-                                                selectedMountain = mountain
-                                            } label: {
-                                                MountainCard(mountain: mountain)
-                                                
-                                            }
+                    ScrollView {
+                        VStack(alignment: .leading, spacing: 20) {
+                            // Active Trip Section
+                            if let activeTrip = session.activeTrip, searchedMountain.isEmpty {
+                                ActiveTripCard(
+                                    trip: activeTrip,
+                                    onContinue: {
+                                        // Navigate to checklist or dashboard based on progress
+                                        if activeTrip.progressPercentage >= 1.0 {
+                                            router.showOnHikeDashboard(mountain: activeTrip.mountain, hikingTrip: activeTrip)
+                                        } else {
+                                            router.showPackingChecklist(
+                                                mountain: activeTrip.mountain,
+                                                tripDate: activeTrip.tripDate,
+                                                duration: activeTrip.duration,
+                                                numberOfPeople: activeTrip.numberOfPeople
+                                            )
+                                        }
+                                    },
+                                    onCancel: {
+                                        session.activeTrip = nil
+                                    }
+                                )
+                                .padding(.horizontal)
+                                
+                                Text("Jelajahi Gunung Lain")
+                                    .font(.headline)
+                                    .padding(.horizontal)
+                            }
+
+                            if filteredMountains.isEmpty {
+                                ContentUnavailableView.search(text: searchedMountain)
+                            } else {
+                                LazyVGrid(columns: columns, spacing: 15) {
+                                    ForEach(filteredMountains, id: \.self) { mountain in
+                                        Button {
+                                            selectedMountain = mountain
+                                        } label: {
+                                            MountainCard(mountain: mountain)
                                         }
                                     }
                                 }
-                                .padding()
+                                .padding(.horizontal)
                             }
-                            
                         }
+                        .padding(.vertical)
                     }
                 }
                 .navigationTitle("Pilih Gunung")
@@ -79,7 +104,6 @@
                         .environment(router)
                 }
             }
-            
         }
     }
 

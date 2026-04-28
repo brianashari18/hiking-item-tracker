@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum ItemZoneCategory: String, CaseIterable, Identifiable {
+enum ItemZoneCategory: String, CaseIterable, Identifiable, Codable {
     case bottom = "Zona Bawah"
     case lowerMiddle = "Zona Tengah Bawah"
     case upperMiddle = "Zona Tengah Atas"
