@@ -170,4 +170,5 @@ struct PackingChecklistView: View {
 #Preview {
     PackingChecklistView(mountain: Mountain.mocks.first!, tripDate: "1 Jan 2024", duration: 1, numberOfPeople: 1)
         .environment(AppRouter())
+        .environment(AppSession())
 }

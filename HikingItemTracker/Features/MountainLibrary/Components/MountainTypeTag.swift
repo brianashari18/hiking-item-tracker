@@ -2,7 +2,7 @@
 //  MountainTypeTag.swift
 //  HikingItemTracker
 //
-//  Created by Antigravity on 28/04/26.
+//  Created by Brian Anashari on 28/04/26.
 //
 
 import SwiftUI

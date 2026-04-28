@@ -1,4 +1,4 @@
-//
+
 //  HikingTripModel+Mock.swift
 //  HikingItemTracker
 //
@@ -14,7 +14,6 @@ extension HikingTripModel {
         duration: 3,
         numberOfPeople: 1,
         sections: [
-            // MARK: - Shelter
             LogisticSectionModel(
                 categoryType: .functional(.shelter),
                 items: [
@@ -27,7 +26,6 @@ extension HikingTripModel {
                 ]
             ),
 
-            // MARK: - Barang Pribadi
             LogisticSectionModel(
                 categoryType: .functional(.personalItem),
                 items: [
@@ -50,7 +48,6 @@ extension HikingTripModel {
                 ]
             ),
 
-            // MARK: - Logistik & Makanan
             LogisticSectionModel(
                 categoryType: .functional(.logisticAndFood),
                 items: [
@@ -65,7 +62,6 @@ extension HikingTripModel {
                 ]
             ),
 
-            // MARK: - Safety Tools
             LogisticSectionModel(
                 categoryType: .functional(.safetyTools),
                 items: [
@@ -79,7 +75,6 @@ extension HikingTripModel {
                 ]
             ),
 
-            // MARK: - P3K
             LogisticSectionModel(
                 categoryType: .functional(.medicalKit),
                 items: [

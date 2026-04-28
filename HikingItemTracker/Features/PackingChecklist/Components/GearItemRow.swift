@@ -43,6 +43,21 @@ struct GearItemRow: View {
                             .foregroundStyle(.orange)
                             .font(.footnote)
                     }
+
+                    if case .conditional(_) = item.necessity {
+                        HStack(spacing: 3) {
+                            Image(systemName: "star.fill")
+                                .font(.system(size: 8))
+                            Text("Khusus")
+                                .font(.caption2)
+                                .fontWeight(.semibold)
+                        }
+                        .foregroundStyle(.orange)
+                        .padding(.horizontal, 6)
+                        .padding(.vertical, 3)
+                        .background(.orange.opacity(0.12))
+                        .clipShape(Capsule())
+                    }
                 }
 
                 HStack(spacing: 8) {

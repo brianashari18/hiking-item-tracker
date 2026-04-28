@@ -1,0 +1,602 @@
+{
+  "items": [
+    {
+      "name": "Sleeping Bag",
+      "unit": "pcs",
+      "ownership": "pribadi",
+      "functionalCategory": "shelter",
+      "zoneCategory": "bottom",
+      "necessity": "universalEssential",
+      "quantityFormula": "perPerson",
+      "baseQuantity": 1
+    },
+    {
+      "name": "Pasak",
+      "unit": "set",
+      "ownership": "kelompok",
+      "functionalCategory": "shelter",
+      "zoneCategory": "outer",
+      "necessity": "universalEssential",
+      "quantityFormula": "fixed",
+      "baseQuantity": 1
+    },
+    {
+      "name": "Matras",
+      "unit": "pcs",
+      "ownership": "pribadi",
+      "functionalCategory": "shelter",
+      "zoneCategory": "bottom",
+      "necessity": "universalEssential",
+      "quantityFormula": "perPerson",
+      "baseQuantity": 1
+    },
+    {
+      "name": "Rangka Tenda",
+      "unit": "set",
+      "ownership": "kelompok",
+      "functionalCategory": "shelter",
+      "zoneCategory": "outer",
+      "necessity": "universalEssential",
+      "quantityFormula": "fixed",
+      "baseQuantity": 1
+    },
+    {
+      "name": "Flysheet",
+      "unit": "set",
+      "ownership": "kelompok",
+      "functionalCategory": "shelter",
+      "zoneCategory": "outer",
+      "necessity": "universalEssential",
+      "quantityFormula": "fixed",
+      "baseQuantity": 1
+    },
+    {
+      "name": "Tali Tenda",
+      "unit": "set",
+      "ownership": "kelompok",
+      "functionalCategory": "shelter",
+      "zoneCategory": "outer",
+      "necessity": "universalEssential",
+      "quantityFormula": "fixed",
+      "baseQuantity": 1
+    },
+
+    {
+      "name": "Sepatu Gunung",
+      "unit": "pasang",
+      "ownership": "pribadi",
+      "functionalCategory": "personalItem",
+      "zoneCategory": "outer",
+      "necessity": "universalEssential",
+      "quantityFormula": "fixed",
+      "baseQuantity": 1
+    },
+    {
+      "name": "Kaos Kaki",
+      "unit": "pasang",
+      "ownership": "pribadi",
+      "functionalCategory": "personalItem",
+      "zoneCategory": "lowerMiddle",
+      "necessity": "universalEssential",
+      "quantityFormula": "fixed",
+      "baseQuantity": 2
+    },
+    {
+      "name": "Jaket Gunung",
+      "unit": "pcs",
+      "ownership": "pribadi",
+      "functionalCategory": "personalItem",
+      "zoneCategory": "upperMiddle",
+      "necessity": "universalEssential",
+      "quantityFormula": "fixed",
+      "baseQuantity": 1
+    },
+    {
+      "name": "Pakaian Layering",
+      "unit": "set",
+      "ownership": "pribadi",
+      "functionalCategory": "personalItem",
+      "zoneCategory": "lowerMiddle",
+      "necessity": "universalEssential",
+      "quantityFormula": "fixed",
+      "baseQuantity": 1
+    },
+    {
+      "name": "Jas Hujan",
+      "unit": "pcs",
+      "ownership": "pribadi",
+      "functionalCategory": "personalItem",
+      "zoneCategory": "outer",
+      "necessity": "universalEssential",
+      "quantityFormula": "fixed",
+      "baseQuantity": 1
+    },
+    {
+      "name": "Sarung Tangan",
+      "unit": "pcs",
+      "ownership": "pribadi",
+      "functionalCategory": "personalItem",
+      "zoneCategory": "upperMiddle",
+      "necessity": "universalEssential",
+      "quantityFormula": "fixed",
+      "baseQuantity": 1
+    },
+    {
+      "name": "KTP",
+      "unit": "pcs",
+      "ownership": "pribadi",
+      "functionalCategory": "personalItem",
+      "zoneCategory": "top",
+      "necessity": "universalEssential",
+      "quantityFormula": "fixed",
+      "baseQuantity": 1
+    },
+    {
+      "name": "Surat Izin Pendakian",
+      "unit": "pcs",
+      "ownership": "pribadi",
+      "functionalCategory": "personalItem",
+      "zoneCategory": "top",
+      "necessity": "universalEssential",
+      "quantityFormula": "fixed",
+      "baseQuantity": 1
+    },
+    {
+      "name": "Baju Ganti",
+      "unit": "pcs",
+      "ownership": "pribadi",
+      "functionalCategory": "personalItem",
+      "zoneCategory": "lowerMiddle",
+      "necessity": "universalEssential",
+      "quantityFormula": "perDayMinus1",
+      "baseQuantity": 1
+    },
+    {
+      "name": "Celana Ganti",
+      "unit": "pcs",
+      "ownership": "pribadi",
+      "functionalCategory": "personalItem",
+      "zoneCategory": "lowerMiddle",
+      "necessity": "universalEssential",
+      "quantityFormula": "perDayMinus1",
+      "baseQuantity": 1
+    },
+    {
+      "name": "Sandal",
+      "unit": "pasang",
+      "ownership": "pribadi",
+      "functionalCategory": "personalItem",
+      "zoneCategory": "outer",
+      "necessity": "optional",
+      "quantityFormula": "fixed",
+      "baseQuantity": 1
+    },
+    {
+      "name": "Sunscreen",
+      "unit": "pcs",
+      "ownership": "pribadi",
+      "functionalCategory": "personalItem",
+      "zoneCategory": "top",
+      "necessity": "optional",
+      "quantityFormula": "fixed",
+      "baseQuantity": 1
+    },
+    {
+      "name": "Peralatan Mandi",
+      "unit": "set",
+      "ownership": "pribadi",
+      "functionalCategory": "personalItem",
+      "zoneCategory": "outer",
+      "necessity": "optional",
+      "quantityFormula": "fixed",
+      "baseQuantity": 1
+    },
+    {
+      "name": "Topi",
+      "unit": "pcs",
+      "ownership": "pribadi",
+      "functionalCategory": "personalItem",
+      "zoneCategory": "top",
+      "necessity": "optional",
+      "quantityFormula": "fixed",
+      "baseQuantity": 1
+    },
+
+    {
+      "name": "Nesting",
+      "unit": "set",
+      "ownership": "kelompok",
+      "functionalCategory": "logisticAndFood",
+      "zoneCategory": "bottom",
+      "necessity": "universalEssential",
+      "quantityFormula": "fixed",
+      "baseQuantity": 1
+    },
+    {
+      "name": "Korek Api",
+      "unit": "pcs",
+      "ownership": "kelompok",
+      "functionalCategory": "logisticAndFood",
+      "zoneCategory": "top",
+      "necessity": "universalEssential",
+      "quantityFormula": "fixed",
+      "baseQuantity": 1
+    },
+    {
+      "name": "Botol Air",
+      "unit": "pcs",
+      "ownership": "pribadi",
+      "functionalCategory": "logisticAndFood",
+      "zoneCategory": "outer",
+      "necessity": "universalEssential",
+      "quantityFormula": "fixed",
+      "baseQuantity": 1
+    },
+    {
+      "name": "Makanan Ringan",
+      "unit": "pcs",
+      "ownership": "pribadi",
+      "functionalCategory": "logisticAndFood",
+      "zoneCategory": "upperMiddle",
+      "necessity": "universalEssential",
+      "quantityFormula": "mealsPerDay",
+      "baseQuantity": 3
+    },
+    {
+      "name": "Makanan Berat",
+      "unit": "pcs",
+      "ownership": "kelompok",
+      "functionalCategory": "logisticAndFood",
+      "zoneCategory": "upperMiddle",
+      "necessity": "universalEssential",
+      "quantityFormula": "mealsPerDay",
+      "baseQuantity": 3
+    },
+    {
+      "name": "Gas Kaleng",
+      "unit": "pcs",
+      "ownership": "kelompok",
+      "functionalCategory": "logisticAndFood",
+      "zoneCategory": "bottom",
+      "necessity": "universalEssential",
+      "quantityFormula": "perDay",
+      "baseQuantity": 1
+    },
+    {
+      "name": "Filter Air Portable",
+      "unit": "pcs",
+      "ownership": "kelompok",
+      "functionalCategory": "logisticAndFood",
+      "zoneCategory": "outer",
+      "necessity": "universalEssential",
+      "quantityFormula": "fixed",
+      "baseQuantity": 1
+    },
+    {
+      "name": "Alat Makan",
+      "unit": "set",
+      "ownership": "pribadi",
+      "functionalCategory": "logisticAndFood",
+      "zoneCategory": "top",
+      "necessity": "universalEssential",
+      "quantityFormula": "fixed",
+      "baseQuantity": 1
+    },
+
+    {
+      "name": "Headlamp",
+      "unit": "pcs",
+      "ownership": "pribadi",
+      "functionalCategory": "safetyTools",
+      "zoneCategory": "top",
+      "necessity": "universalEssential",
+      "quantityFormula": "fixed",
+      "baseQuantity": 1
+    },
+    {
+      "name": "Pisau Lipat",
+      "unit": "pcs",
+      "ownership": "kelompok",
+      "functionalCategory": "safetyTools",
+      "zoneCategory": "top",
+      "necessity": "universalEssential",
+      "quantityFormula": "fixed",
+      "baseQuantity": 1
+    },
+    {
+      "name": "Alat Jahit",
+      "unit": "set",
+      "ownership": "kelompok",
+      "functionalCategory": "safetyTools",
+      "zoneCategory": "top",
+      "necessity": "optional",
+      "quantityFormula": "fixed",
+      "baseQuantity": 1
+    },
+    {
+      "name": "Peta",
+      "unit": "pcs",
+      "ownership": "kelompok",
+      "functionalCategory": "safetyTools",
+      "zoneCategory": "top",
+      "necessity": "optional",
+      "quantityFormula": "fixed",
+      "baseQuantity": 1
+    },
+    {
+      "name": "Kompas",
+      "unit": "pcs",
+      "ownership": "kelompok",
+      "functionalCategory": "safetyTools",
+      "zoneCategory": "top",
+      "necessity": "optional",
+      "quantityFormula": "fixed",
+      "baseQuantity": 1
+    },
+
+    {
+      "name": "Gulungan Kasa Steril",
+      "unit": "pcs",
+      "ownership": "kelompok",
+      "functionalCategory": "medicalKit",
+      "zoneCategory": "top",
+      "necessity": "universalEssential",
+      "quantityFormula": "fixed",
+      "baseQuantity": 1
+    },
+    {
+      "name": "Pembersih Dasar Alkohol",
+      "unit": "pcs",
+      "ownership": "kelompok",
+      "functionalCategory": "medicalKit",
+      "zoneCategory": "top",
+      "necessity": "universalEssential",
+      "quantityFormula": "fixed",
+      "baseQuantity": 1
+    },
+    {
+      "name": "Pinset",
+      "unit": "pcs",
+      "ownership": "kelompok",
+      "functionalCategory": "medicalKit",
+      "zoneCategory": "top",
+      "necessity": "universalEssential",
+      "quantityFormula": "fixed",
+      "baseQuantity": 1
+    },
+    {
+      "name": "Salep Antiseptik",
+      "unit": "pcs",
+      "ownership": "kelompok",
+      "functionalCategory": "medicalKit",
+      "zoneCategory": "top",
+      "necessity": "universalEssential",
+      "quantityFormula": "fixed",
+      "baseQuantity": 1
+    },
+    {
+      "name": "Perban Elastis",
+      "unit": "pcs",
+      "ownership": "kelompok",
+      "functionalCategory": "medicalKit",
+      "zoneCategory": "top",
+      "necessity": "universalEssential",
+      "quantityFormula": "fixed",
+      "baseQuantity": 1
+    },
+    {
+      "name": "Sarung Tangan Lateks",
+      "unit": "pasang",
+      "ownership": "kelompok",
+      "functionalCategory": "medicalKit",
+      "zoneCategory": "top",
+      "necessity": "universalEssential",
+      "quantityFormula": "fixed",
+      "baseQuantity": 2
+    },
+    {
+      "name": "Ibuprofen & Antihistamin",
+      "unit": "set",
+      "ownership": "kelompok",
+      "functionalCategory": "medicalKit",
+      "zoneCategory": "top",
+      "necessity": "universalEssential",
+      "quantityFormula": "fixed",
+      "baseQuantity": 1
+    },
+    {
+      "name": "Bubuk Elektrolit",
+      "unit": "pcs",
+      "ownership": "kelompok",
+      "functionalCategory": "medicalKit",
+      "zoneCategory": "top",
+      "necessity": "universalEssential",
+      "quantityFormula": "fixed",
+      "baseQuantity": 5
+    },
+    {
+      "name": "Minyak Kayu Putih",
+      "unit": "pcs",
+      "ownership": "kelompok",
+      "functionalCategory": "medicalKit",
+      "zoneCategory": "top",
+      "necessity": "universalEssential",
+      "quantityFormula": "fixed",
+      "baseQuantity": 1
+    },
+    {
+      "name": "Kapas",
+      "unit": "pcs",
+      "ownership": "kelompok",
+      "functionalCategory": "medicalKit",
+      "zoneCategory": "top",
+      "necessity": "universalEssential",
+      "quantityFormula": "fixed",
+      "baseQuantity": 1
+    },
+    {
+      "name": "Plester",
+      "unit": "set",
+      "ownership": "kelompok",
+      "functionalCategory": "medicalKit",
+      "zoneCategory": "top",
+      "necessity": "universalEssential",
+      "quantityFormula": "fixed",
+      "baseQuantity": 1
+    },
+    {
+      "name": "Obat Pribadi",
+      "unit": "set",
+      "ownership": "pribadi",
+      "functionalCategory": "medicalKit",
+      "zoneCategory": "top",
+      "necessity": "universalEssential",
+      "quantityFormula": "fixed",
+      "baseQuantity": 1
+    },
+
+    {
+      "name": "Masker N95",
+      "unit": "pcs",
+      "ownership": "pribadi",
+      "functionalCategory": "specialGear",
+      "zoneCategory": "top",
+      "necessity": "conditional",
+      "requiredTypes": ["volcanic", "sandy", "poisonous"],
+      "quantityFormula": "fixed",
+      "baseQuantity": 1
+    },
+    {
+      "name": "Kacamata Debu",
+      "unit": "pcs",
+      "ownership": "pribadi",
+      "functionalCategory": "specialGear",
+      "zoneCategory": "top",
+      "necessity": "conditional",
+      "requiredTypes": ["volcanic", "sandy"],
+      "quantityFormula": "fixed",
+      "baseQuantity": 1
+    },
+    {
+      "name": "Balaclava",
+      "unit": "pcs",
+      "ownership": "pribadi",
+      "functionalCategory": "specialGear",
+      "zoneCategory": "upperMiddle",
+      "necessity": "conditional",
+      "requiredTypes": ["cold"],
+      "quantityFormula": "fixed",
+      "baseQuantity": 1
+    },
+    {
+      "name": "Hand Warmer",
+      "unit": "pcs",
+      "ownership": "pribadi",
+      "functionalCategory": "specialGear",
+      "zoneCategory": "top",
+      "necessity": "conditional",
+      "requiredTypes": ["cold"],
+      "quantityFormula": "fixed",
+      "baseQuantity": 2
+    },
+    {
+      "name": "Gaiter Salju",
+      "unit": "pasang",
+      "ownership": "pribadi",
+      "functionalCategory": "specialGear",
+      "zoneCategory": "lowerMiddle",
+      "necessity": "conditional",
+      "requiredTypes": ["cold"],
+      "quantityFormula": "fixed",
+      "baseQuantity": 1
+    },
+    {
+      "name": "Tali Prusik",
+      "unit": "pcs",
+      "ownership": "pribadi",
+      "functionalCategory": "specialGear",
+      "zoneCategory": "outer",
+      "necessity": "conditional",
+      "requiredTypes": ["climbing", "steep"],
+      "quantityFormula": "fixed",
+      "baseQuantity": 1
+    },
+    {
+      "name": "Harness",
+      "unit": "pcs",
+      "ownership": "pribadi",
+      "functionalCategory": "specialGear",
+      "zoneCategory": "outer",
+      "necessity": "conditional",
+      "requiredTypes": ["climbing"],
+      "quantityFormula": "fixed",
+      "baseQuantity": 1
+    },
+    {
+      "name": "Carabiner",
+      "unit": "pcs",
+      "ownership": "pribadi",
+      "functionalCategory": "specialGear",
+      "zoneCategory": "outer",
+      "necessity": "conditional",
+      "requiredTypes": ["climbing"],
+      "quantityFormula": "fixed",
+      "baseQuantity": 2
+    },
+    {
+      "name": "Trekking Pole",
+      "unit": "pasang",
+      "ownership": "pribadi",
+      "functionalCategory": "specialGear",
+      "zoneCategory": "outer",
+      "necessity": "conditional",
+      "requiredTypes": ["slippery", "rocky", "steep", "muddy"],
+      "quantityFormula": "fixed",
+      "baseQuantity": 1
+    },
+    {
+      "name": "Gaiter Lumpur",
+      "unit": "pasang",
+      "ownership": "pribadi",
+      "functionalCategory": "specialGear",
+      "zoneCategory": "lowerMiddle",
+      "necessity": "conditional",
+      "requiredTypes": ["slippery", "muddy"],
+      "quantityFormula": "fixed",
+      "baseQuantity": 1
+    },
+    {
+      "name": "Kompas + Peta Jalur",
+      "unit": "set",
+      "ownership": "kelompok",
+      "functionalCategory": "specialGear",
+      "zoneCategory": "top",
+      "necessity": "conditional",
+      "requiredTypes": ["foggy"],
+      "quantityFormula": "fixed",
+      "baseQuantity": 1
+    },
+    {
+      "name": "Peluit Darurat",
+      "unit": "pcs",
+      "ownership": "pribadi",
+      "functionalCategory": "specialGear",
+      "zoneCategory": "top",
+      "necessity": "conditional",
+      "requiredTypes": ["foggy"],
+      "quantityFormula": "fixed",
+      "baseQuantity": 1
+    },
+    {
+      "name": "Sarung Tangan Grip",
+      "unit": "pasang",
+      "ownership": "pribadi",
+      "functionalCategory": "specialGear",
+      "zoneCategory": "upperMiddle",
+      "necessity": "conditional",
+      "requiredTypes": ["humid", "rooted", "mossy"],
+      "quantityFormula": "fixed",
+      "baseQuantity": 1
+    }
+  ]
+}

@@ -13,6 +13,7 @@ enum ItemFunctionalCategory: String, CaseIterable, Identifiable, Codable {
     case logisticAndFood    = "Logistik & Makanan"
     case safetyTools        = "Safety Tools"
     case medicalKit         = "P3K"
+    case specialGear        = "Perlengkapan Khusus"
 
     var id: String { rawValue }
 
@@ -23,6 +24,7 @@ enum ItemFunctionalCategory: String, CaseIterable, Identifiable, Codable {
         case .logisticAndFood:   return "fork.knife"
         case .safetyTools:       return "gearshape.fill"
         case .medicalKit:        return "cross.case"
+        case .specialGear:       return "star.fill"
         }
     }
 
@@ -36,6 +38,9 @@ enum ItemFunctionalCategory: String, CaseIterable, Identifiable, Codable {
             return .upperMiddle
         case .safetyTools, .medicalKit:
             return .top
+        case .specialGear:
+            return .top
         }
     }
 }
+

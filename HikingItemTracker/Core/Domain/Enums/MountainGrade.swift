@@ -2,7 +2,7 @@
 //  MountainGrade.swift
 //  HikingItemTracker
 //
-//  Created by Antigravity on 27/04/26.
+//  Created by Brian Anashari on 27/04/26.
 //
 
 import SwiftUI
