@@ -13,10 +13,14 @@ struct PackingChecklistView: View {
     private let mountain: Mountain?
     @State private var viewModel: PackingChecklistViewModel
     
-    init(mountain: Mountain? = nil, tripDate: String? = nil, duration: Int = 1, numberOfPeople: Int = 1) {
+    init(mountain: Mountain? = nil, tripDate: String? = nil, duration: Int = 1, numberOfPeople: Int = 1, savedTrip: HikingTripModel? = nil) {
         self.mountain = mountain
         let trip: HikingTripModel
-        if let mountain = mountain {
+
+        // Kalau ada trip tersimpan untuk gunung yang sama, restore langsung
+        if let saved = savedTrip, saved.mountain == mountain {
+            trip = saved
+        } else if let mountain = mountain {
             trip = ChecklistGenerator.generateTrip(
                 mountain: mountain,
                 tripDate: tripDate ?? "",
@@ -55,10 +59,11 @@ struct PackingChecklistView: View {
             .safeAreaInset(edge: .bottom) {
                 BottomActionButton(
                     title: viewModel.progressPercentage < 1.0
-                    ? "Lengkapi Barangmu (\(Int(viewModel.progressPercentage * 100))%)"
-                    : "Mulai Pendakian",
+                        ? "Lengkapi Barangmu"
+                        : "Mulai Pendakian",
+                    progress: viewModel.progressPercentage,
                     action: viewModel.progressPercentage >= 1.0
-                    ? { 
+                    ? {
                         if let mountain = mountain {
                             router.showOnHikeDashboard(mountain: mountain, hikingTrip: viewModel.hikingTrip)
                         }

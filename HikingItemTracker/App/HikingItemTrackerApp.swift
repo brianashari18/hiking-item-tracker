@@ -23,6 +23,7 @@ struct HikingItemTrackerApp: App {
 
 private struct AppRootView: View {
     @Environment(AppRouter.self) private var router
+    @Environment(AppSession.self) private var session
 
     var body: some View {
         switch router.currentRoute {
@@ -35,7 +36,7 @@ private struct AppRootView: View {
         case .tripSetup(let selectedMountain):
             TripSetupView(mountain: selectedMountain)
         case .packingChecklist(let mountain, let tripDate, let duration, let numberOfPeople):
-            PackingChecklistView(mountain: mountain, tripDate: tripDate, duration: duration, numberOfPeople: numberOfPeople)
+            PackingChecklistView(mountain: mountain, tripDate: tripDate, duration: duration, numberOfPeople: numberOfPeople, savedTrip: session.activeTrip)
         case .onHikeDashboard(let mountain, let hikingTrip):
             OnHikeDashboardView(mountain: mountain, hikingTrip: hikingTrip)
         case .mountainLibrary:
