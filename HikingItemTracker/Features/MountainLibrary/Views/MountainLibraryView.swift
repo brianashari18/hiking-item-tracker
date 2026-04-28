@@ -40,13 +40,32 @@
         var body: some View {
             NavigationStack {
                 VStack(spacing: 0) {
-                    Picker("Grade", selection: $selectedGrade) {
-                        ForEach(grades, id: \.self) { grade in
-                            Text(grade == "Semua" ? "Semua" : grade).tag(grade)
+                    ScrollView(.horizontal, showsIndicators: false) {
+                        HStack(spacing: 10) {
+                            ForEach(grades, id: \.self) { grade in
+                                Button {
+                                    selectedGrade = grade
+                                } label: {
+                                    Text(grade == "Semua" ? "Semua" : "Grade \(grade)")
+                                        .font(.subheadline)
+                                        .fontWeight(selectedGrade == grade ? .semibold : .regular)
+                                        .foregroundStyle(selectedGrade == grade ? .white : .primary)
+                                        .padding(.horizontal, 16)
+                                        .padding(.vertical, 8)
+                                        .background(
+                                            selectedGrade == grade
+                                                ? Color.accentColor
+                                                : Color(.systemGray5),
+                                            in: Capsule()
+                                        )
+                                }
+                                .buttonStyle(.plain)
+                                .animation(.easeInOut(duration: 0.2), value: selectedGrade)
+                            }
                         }
+                        .padding(.horizontal)
+                        .padding(.vertical, 10)
                     }
-                    .pickerStyle(.segmented)
-                    .padding()
                     
                     ScrollView {
                         VStack(alignment: .leading, spacing: 20) {
