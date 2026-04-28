@@ -12,6 +12,15 @@ struct MountainDetailSheet: View {
 
     @Environment(\.dismiss) var dismiss
     @Environment(AppRouter.self) private var router
+    @Environment(AppSession.self) private var session
+
+    @State private var showLockedAlert = false
+
+    /// User sedang dalam pendakian aktif (sudah checklist semua & masuk OnHikeDashboard)
+    private var isActivelyHiking: Bool {
+        guard let trip = session.activeTrip else { return false }
+        return trip.progressPercentage >= 1.0
+    }
     
     var body: some View {
         NavigationStack {
@@ -38,6 +47,20 @@ struct MountainDetailSheet: View {
                         
                         Divider()
                         
+                        VStack(alignment: .leading, spacing: 10) {
+                            Label("Tag Gunung", systemImage: "tag.fill")
+                                .font(.headline)
+                                .foregroundStyle(.primary)
+
+                            FlowLayout(spacing: 8) {
+                                ForEach(mountain.type, id: \.self) { type in
+                                    MountainTypeTag(type: type)
+                                }
+                            }
+                        }
+                        
+                        Divider()
+                        
                         Spacer()
                         
                         MountainDetailCTAButton(
@@ -45,8 +68,17 @@ struct MountainDetailSheet: View {
                             gradeAccentColor: mountain.grade.accentColor,
                             selectedMountain: mountain
                         ) {
-                            dismiss()
-                            router.showTripSetup(mountain: mountain)
+                            if isActivelyHiking {
+                                showLockedAlert = true
+                            } else {
+                                dismiss()
+                                router.showTripSetup(mountain: mountain)
+                            }
+                        }
+                        .alert("Pendakian Sedang Berlangsung", isPresented: $showLockedAlert) {
+                            Button("Mengerti", role: .cancel) {}
+                        } message: {
+                            Text("Selesaikan pendakianmu terlebih dahulu sebelum memilih gunung baru.")
                         }
 
                     }
@@ -69,11 +101,13 @@ struct MountainDetailSheet: View {
     }
 
     private var descriptionText: String {
-        "\(mountain.name) berada di \(mountain.location) dengan ketinggian \(mountain.height) mdpl. Jalur pendakiannya \(mountain.grade.difficulty.lowercased()) dan umumnya ditempuh sekitar \(mountain.duration) hari."
+        let typeList = mountain.type.map { $0.displayName.lowercased() }.joined(separator: ", ")
+        return "\(mountain.name) berada di \(mountain.location) dengan ketinggian \(mountain.height) mdpl. Jalur pendakiannya \(mountain.grade.difficulty.lowercased()) dan umumnya ditempuh sekitar \(mountain.duration) hari. Gunung ini memiliki karakteristik \(typeList)."
     }
 }
 
 #Preview {
     MountainDetailSheet(mountain: Mountain.mocks[0])
         .environment(AppRouter())
+        .environment(AppSession())
 }

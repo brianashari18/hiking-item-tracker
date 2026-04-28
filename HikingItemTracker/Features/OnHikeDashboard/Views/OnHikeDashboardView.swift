@@ -17,53 +17,65 @@ struct OnHikeDashboardView: View {
     }
 
     var body: some View {
-        VStack(spacing: 0) {
-            ScrollView {
-                VStack(spacing: 24) {
-                    Text("Siap Untuk\nMelakukan Pendakian")
-                        .font(.title2)
-                        .fontWeight(.bold)
-                        .multilineTextAlignment(.center)
-                        .padding(.top, 24)
-
-                    LottieView(animationName: "Traveler")
-                        .frame(height: 280)
-                        .padding(.horizontal, 20)
-
-                    VStack(spacing: 12) {
-                        CheckEquipmentButton {
-                            viewModel.isStatusSheetPresented = true
+        NavigationStack {
+            VStack(spacing: 0) {
+                ScrollView {
+                    VStack(spacing: 24) {
+                        Text("Siap Untuk\nMelakukan Pendakian")
+                            .font(.title2)
+                            .fontWeight(.bold)
+                            .multilineTextAlignment(.center)
+                            .padding(.top, 24)
+                        
+                        LottieView(animationName: "Traveler")
+                            .frame(height: 280)
+                            .padding(.horizontal, 20)
+                        
+                        VStack(spacing: 12) {
+                            CheckEquipmentButton {
+                                viewModel.isStatusSheetPresented = true
+                            }
+                            
+                            MountainInfoCard(
+                                mountain: viewModel.mountain,
+                                altitudeText: viewModel.altitudeText,
+                                durationText: viewModel.durationText
+                            )
                         }
-
-                        MountainInfoCard(
-                            mountain: viewModel.mountain,
-                            altitudeText: viewModel.altitudeText,
-                            durationText: viewModel.durationText
-                        )
+                        .padding(.horizontal, 20)
+                        
+                        Spacer(minLength: 80)
                     }
-                    .padding(.horizontal, 20)
-
-                    Spacer(minLength: 80)
+                }
+                
+                finishButton
+            }
+            .background(Color(.systemGroupedBackground).ignoresSafeArea())
+            .onChange(of: viewModel.hikingTrip) { _, newValue in
+                session.activeTrip = newValue
+            }
+            .sheet(isPresented: $viewModel.isStatusSheetPresented) {
+                StatusBarangView(sections: viewModel.hikingTrip.sections)
+            }
+            .alert("Perjalanan Selesai", isPresented: $viewModel.isFinishAlertPresented) {
+                Button("Tidak", role: .cancel) {}
+                Button("Yakin", role: .destructive) {
+                    session.activeTrip = nil
+                    router.showTripSetupFromFinish()
+                }
+            } message: {
+                Text("Apakah kamu yakin ingin menyelesaikan pendakian?")
+            }
+            .toolbar {
+                ToolbarItem(placement: .topBarLeading) {
+                    Button {
+                        router.showMountainLibrary()
+                    } label: {
+                        Image(systemName: "house")
+                            .fontWeight(.semibold)
+                    }
                 }
             }
-
-            finishButton
-        }
-        .background(Color(.systemGroupedBackground).ignoresSafeArea())
-        .onChange(of: viewModel.hikingTrip) { _, newValue in
-            session.activeTrip = newValue
-        }
-        .sheet(isPresented: $viewModel.isStatusSheetPresented) {
-            StatusBarangView(sections: viewModel.hikingTrip.sections)
-        }
-        .alert("Perjalanan Selesai", isPresented: $viewModel.isFinishAlertPresented) {
-            Button("Tidak", role: .cancel) {}
-            Button("Yakin", role: .destructive) {
-                session.activeTrip = nil
-                router.showTripSetupFromFinish()
-            }
-        } message: {
-            Text("Apakah kamu yakin ingin menyelesaikan pendakian?")
         }
     }
 

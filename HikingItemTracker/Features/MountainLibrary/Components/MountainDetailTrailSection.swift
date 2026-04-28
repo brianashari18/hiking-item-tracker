@@ -11,6 +11,7 @@ struct MountainDetailTrailSection: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 18) {
+            
             DetailInfoBlock(
                 title: "Karakteristik Jalur",
                 systemImage: "signpost.right.and.left.fill",

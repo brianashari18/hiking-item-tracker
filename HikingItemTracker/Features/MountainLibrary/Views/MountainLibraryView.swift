@@ -54,7 +54,7 @@
                                         .padding(.vertical, 8)
                                         .background(
                                             selectedGrade == grade
-                                                ? Color.accentColor
+                                                ? Color.teal
                                                 : Color(.systemGray5),
                                             in: Capsule()
                                         )
@@ -121,6 +121,7 @@
                 .sheet(item: $selectedMountain) { mountain in
                     MountainDetailSheet(mountain: mountain)
                         .environment(router)
+                        .environment(session)
                 }
             }
         }
@@ -129,4 +130,5 @@
     #Preview {
         MountainLibraryView()
             .environment(AppRouter())
+            .environment(AppSession())
     }
